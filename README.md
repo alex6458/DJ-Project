@@ -1,5 +1,5 @@
 
-# Design the Jogos - Projeto "Underwater Game"
+# Design de Jogos - Projeto "Abyssal Guardians"
 
 Este repositório contem os ficheiros Unity do jogo.
 
