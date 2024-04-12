@@ -8,6 +8,8 @@ public class PlayGame : MonoBehaviour
 {
 
     public AudioSource StartSound;
+    public Animator animator;
+    private int nextScene;
 
     public void StartGame()
     {
@@ -26,11 +28,12 @@ public class PlayGame : MonoBehaviour
         {
             // Play the start sound
             StartSound.Play();
-
+            animator.SetTrigger("FadeOut");
             // Wait for the duration of the audio clip
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1);
 
             // Load the next scene after the sound has finished playing
+            nextScene = SceneManager.GetActiveScene().buildIndex + 1;
             SceneManager.LoadScene(1);
         }
 
