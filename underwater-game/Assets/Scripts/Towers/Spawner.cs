@@ -54,12 +54,12 @@ public class Spawner : MonoBehaviour
             Debug.Log(spawnTilemap.GetColliderType(CellPosDefault));
 
             //check if we can spawn in that cell
-            //if (spawnTilemap.GetColliderType(CellPosDefault) == Tile.ColliderType.None)
-            //{
+            if (spawnTilemap.GetColliderType(CellPosDefault) == Tile.ColliderType.None)
+            {
                 CellPosCentered = new Vector3(CellPosCentered.x, CellPosCentered.y, 0);
                 SpawnTower(CellPosCentered);
                 spawnTilemap.SetColliderType(CellPosDefault, Tile.ColliderType.None);
-            //}
+            }
         }
 
     }

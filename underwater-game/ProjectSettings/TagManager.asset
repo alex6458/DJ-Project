@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Base
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 714937499
+    locked: 0
+  - name: SpawnPoint
+    uniqueID: 1983302089
+    locked: 0
+  - name: Tower
+    uniqueID: 256554471
     locked: 0
