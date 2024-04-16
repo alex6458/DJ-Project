@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class RangeEnemyBehaviour : MonoBehaviour
 {
     public string targetTag = "Base"; // Tag of the target object
     public float moveSpeed = 3f; // Speed at which the enemy moves
-
+    public GameObject bulletPrefab; // Reference to the bullet prefab
+    public float bulletSpawnDistance = 1.0f; // Distance ahead of the enemy to spawn the bullet
     private Transform target; // Reference to the target's transform
     private bool isMoving = true; // Flag to control enemy movement
 
@@ -46,13 +47,15 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("Collision detected!");
         // Check if the collided object has the specified tag
         if (collision.gameObject.CompareTag(targetTag))
-        {
-            Health healthBar = collision.gameObject.GetComponent<Health>();
-            if (healthBar != null)
+        { 
+            // Calculate spawn position slightly ahead of the enemy
+            Vector3 spawnPosition = transform.position + transform.forward * bulletSpawnDistance;
+
+            // Spawn a bullet at the calculated position
+            if (bulletPrefab != null)
             {
-                healthBar.TakeDamage(1f);
+                Instantiate(bulletPrefab, transform.position, transform.rotation, transform.parent);
             }
-            // Enemy has collided with the target, stop moving
             isMoving = false;
         }
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class RangeAttack : MonoBehaviour
 {
     public string targetTag = "Base"; // Tag of the target object
     public float moveSpeed = 3f; // Speed at which the enemy moves
@@ -54,6 +54,7 @@ public class EnemyMovement : MonoBehaviour
             }
             // Enemy has collided with the target, stop moving
             isMoving = false;
+            Destroy(gameObject);
         }
     }
 }
