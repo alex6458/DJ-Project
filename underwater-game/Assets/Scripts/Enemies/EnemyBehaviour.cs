@@ -47,13 +47,12 @@ public class EnemyMovement : MonoBehaviour
         // Check if the collided object has the specified tag
         if (collision.gameObject.CompareTag(targetTag))
         {
+            isMoving = false;
             Health healthBar = collision.gameObject.GetComponent<Health>();
             if (healthBar != null)
             {
                 healthBar.TakeDamage(1f);
             }
-            // Enemy has collided with the target, stop moving
-            isMoving = false;
         }
     }
 }

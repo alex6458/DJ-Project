@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RangeEnemyBehaviour : MonoBehaviour
+public class RangedBehaviour : MonoBehaviour
 {
     public string targetTag = "Base"; // Tag of the target object
     public float moveSpeed = 3f; // Speed at which the enemy moves

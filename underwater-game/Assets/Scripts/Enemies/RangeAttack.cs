@@ -47,11 +47,11 @@ public class RangeAttack : MonoBehaviour
         // Check if the collided object has the specified tag
         if (collision.gameObject.CompareTag(targetTag))
         {
-            Health healthBar = collision.gameObject.GetComponent<Health>();
-            if (healthBar != null)
-            {
-                healthBar.TakeDamage(1f);
-            }
+           Health healthBar = collision.gameObject.GetComponent<Health>();
+           if (healthBar != null)
+           {
+               healthBar.TakeDamage(1f);
+           }
             // Enemy has collided with the target, stop moving
             isMoving = false;
             Destroy(gameObject);

@@ -8,9 +8,16 @@ public class Health : MonoBehaviour
 {
     public Image HealthBarUi;
     private float fillamount = 0f;
-    private float maxHealth = 10f;
-    public float currentHealth = 10f;
+    public float maxHealth = 10f;
+    private float currentHealth = 10f;
 
+
+
+    public void Start()
+    {
+        currentHealth = maxHealth;
+
+    }
 
     void UpdateHealthBar()
     {
@@ -36,5 +43,17 @@ public class Health : MonoBehaviour
 
         // Update the health bar UI
         UpdateHealthBar();
+
+        if (currentHealth <= 0f)
+        {
+            if (gameObject.tag == "Base")
+            {
+                //load defeat scene
+            }
+            else if(gameObject.tag == "Enemy")
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
