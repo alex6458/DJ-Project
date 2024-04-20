@@ -20,7 +20,7 @@ public class RangeAttack : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Target with tag '" + targetTag + "' not found!");
+            Destroy(gameObject);
         }
     }
 
@@ -37,6 +37,11 @@ public class RangeAttack : MonoBehaviour
 
             // Move towards the target
             transform.Translate(direction * moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // If target is no longer valid, destroy this enemy GameObject
+            Destroy(gameObject);
         }
     }
 

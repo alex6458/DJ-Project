@@ -138,5 +138,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08356c59b66cc345abfaef5ddbec616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Base
+  targetTag: Friendly
   moveSpeed: 3
