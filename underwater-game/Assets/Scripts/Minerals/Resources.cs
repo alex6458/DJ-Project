@@ -20,5 +20,22 @@ public class Mineral : MonoBehaviour
 
     }
 
+
+    public bool CheckResources(float woodAmount, float stoneAmount, float ironAmount, float goldAmount)
+    {
+
+        if (woodAmount <= wood && stoneAmount <= stone && ironAmount <= iron && goldAmount <= gold)
+        {
+            wood = wood - woodAmount;
+            stone = stone - stoneAmount;
+            iron = iron - ironAmount;
+            gold = gold - goldAmount;
+
+            return true;
+        }
+
+        return false;
+    }
+
 }
         

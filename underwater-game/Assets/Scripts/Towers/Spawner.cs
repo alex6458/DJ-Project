@@ -11,6 +11,9 @@ public class Spawner : MonoBehaviour
     //id of tower to spawn
     int spawnID = -1;
 
+    //Mineral script
+    public Mineral playerResources;
+
     //List of towers prefabs
     public List<GameObject> towersPrefabs;
 
@@ -57,8 +60,25 @@ public class Spawner : MonoBehaviour
             if (spawnTilemap.GetColliderType(CellPosDefault) == Tile.ColliderType.None)
             {
                 CellPosCentered = new Vector3(CellPosCentered.x, CellPosCentered.y, 0);
-                SpawnTower(CellPosCentered);
-                spawnTilemap.SetColliderType(CellPosDefault, Tile.ColliderType.None);
+                TowerCost towerCost = towersPrefabs[spawnID].GetComponent<TowerCost>();
+
+                if (towerCost != null && playerResources != null)
+                {
+                   if( playerResources.CheckResources(towerCost.woodCost, towerCost.stoneCost, towerCost.ironCost, towerCost.goldCost))
+                    {
+                        SpawnTower(CellPosCentered);
+                        spawnTilemap.SetColliderType(CellPosDefault, Tile.ColliderType.None);
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough resources");
+                    }
+                }
+                else
+                {
+                    Debug.Log("tower cost or playerResources not found");
+                }
+
             }
         }
 

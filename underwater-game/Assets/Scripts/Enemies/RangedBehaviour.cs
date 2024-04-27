@@ -3,6 +3,8 @@ using UnityEngine;
 public class RangedBehaviour : MonoBehaviour
 {
     public string targetTag = "Base"; // Tag of the target object
+    public string targetTag2 = "Friendly"; // Tag of the target object
+    private string attackTag = "";
     public float moveSpeed = 3f; // Speed at which the enemy moves
     public GameObject bulletPrefab; // Reference to the bullet prefab
     public float bulletSpawnDistance = 1.0f; // Distance ahead of the enemy to spawn the bullet
@@ -12,21 +14,33 @@ public class RangedBehaviour : MonoBehaviour
     private float lastAttackTime = 0f; // Time when the last attack occurred
     private bool collisionStay = false;
 
+
     void Start()
     {
         // Find the GameObject with the specified tag
+        GameObject targetObject2 = GameObject.FindGameObjectWithTag(targetTag2);
         GameObject targetObject = GameObject.FindGameObjectWithTag(targetTag);
 
         // Get the transform component of the target GameObject
         if (targetObject != null)
         {
             target = targetObject.transform;
+            attackTag = targetTag;
         }
         else
         {
-            Debug.LogError("Target with tag '" + targetTag + "' not found!");
+            if (targetObject2 != null)
+            {
+                target = targetObject2.transform;
+                attackTag = targetTag2;
+            }
+            else
+            {
+                Debug.LogError("Target with tag '" + targetTag + "' not found!");
+            }
         }
     }
+
 
     void Update()
     {
@@ -83,7 +97,7 @@ public class RangedBehaviour : MonoBehaviour
     {
         Debug.Log("Collision detected!");
         // Check if the collided object has the specified tag
-        if (collision.gameObject.CompareTag(targetTag))
+        if (collision.gameObject.CompareTag(attackTag))
         {
             isMoving = false;
             collisionStay = true;

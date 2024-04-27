@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2091022496939832715}
   - component: {fileID: -7946333036488143470}
   - component: {fileID: 5947449313405340128}
+  - component: {fileID: 1375420184419275374}
   m_Layer: 8
   m_Name: MageTower
   m_TagString: Friendly
@@ -107,6 +108,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3657650023541003931, guid: 1afd1c3b15e6a1640bdf87c630770e8f, type: 3}
   bulletSpawnDistance: 1
   targetTag: Enemy
+  attackSpeed: 2
 --- !u!65 &-7946333036488143470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,6 +157,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1375420184419275374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292120818128306103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58086ab043f6f0149bc2cafd16d3ad87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodCost: 5
+  stoneCost: 10
+  ironCost: 0
+  goldCost: 5
 --- !u!1 &6950573503354763852
 GameObject:
   m_ObjectHideFlags: 0

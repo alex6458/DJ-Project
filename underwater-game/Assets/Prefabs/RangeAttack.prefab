@@ -139,4 +139,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Friendly
+  targetTag2: Base
   moveSpeed: 3

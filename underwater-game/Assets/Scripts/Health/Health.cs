@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
             {
                 //load defeat scene
             }
-            else if(gameObject.tag == "Enemy")
+            else if(gameObject.tag == "Enemy" || gameObject.tag == "Friendly")
             {
                 Destroy(gameObject);
             }

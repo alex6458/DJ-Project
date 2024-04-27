@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6283708893446935256}
   - component: {fileID: 5229927666360408969}
   - component: {fileID: 8569919658055663966}
+  - component: {fileID: 2541239820268930220}
   m_Layer: 8
   m_Name: ArcherTower
   m_TagString: Friendly
@@ -171,6 +172,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBarUi: {fileID: 701754481008515827}
   maxHealth: 5
+--- !u!114 &2541239820268930220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765503345581909049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58086ab043f6f0149bc2cafd16d3ad87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodCost: 5
+  stoneCost: 10
+  ironCost: 0
+  goldCost: 0
 --- !u!1 &5256709683127493471
 GameObject:
   m_ObjectHideFlags: 0

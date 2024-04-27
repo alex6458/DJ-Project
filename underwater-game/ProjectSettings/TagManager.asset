@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Friendly
   - Mineral
+  - Base
   layers:
   - Default
   - TransparentFX

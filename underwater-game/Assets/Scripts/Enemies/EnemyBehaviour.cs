@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public string targetTag = "Base"; // Tag of the target object
+    public string targetTag2 = "Friendly"; // Tag of the target object
+    private string attackTag = "";
     public float moveSpeed = 3f; // Speed at which the enemy moves
     private Transform target; // Reference to the target's transform
     private bool isMoving = true; // Flag to control enemy movement
@@ -14,16 +16,28 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         // Find the GameObject with the specified tag
+        GameObject targetObject2 = GameObject.FindGameObjectWithTag(targetTag2);
         GameObject targetObject = GameObject.FindGameObjectWithTag(targetTag);
+
+
 
         // Get the transform component of the target GameObject
         if (targetObject != null)
         {
             target = targetObject.transform;
+            attackTag = targetTag;
         }
         else
         {
-            Debug.LogError("Target with tag '" + targetTag + "' not found!");
+            if (targetObject2 != null)
+            {
+                target = targetObject2.transform;
+                attackTag = targetTag2;
+            }
+            else
+            {
+                Debug.LogError("Target with tag '" + targetTag + "' not found!");
+            }
         }
     }
 
@@ -79,7 +93,7 @@ public class EnemyMovement : MonoBehaviour
         healthBar = collision.gameObject.GetComponent<Health>();
 
         // Check if the collided object has the specified tag
-        if (collision.gameObject.CompareTag(targetTag))
+        if (collision.gameObject.CompareTag(attackTag))
         {
             isMoving = false;
             collisionStay = true;

@@ -1,38 +1,26 @@
 using UnityEngine;
 
-public class RangeAttack : MonoBehaviour
+public class RangeAttackTower : MonoBehaviour
 {
-    public string targetTag = "Base"; // Tag of the target object
-    public string targetTag2 = "Friendly"; // Tag of the target object
-    private string attackTag = "";
+    public string targetTag = "Enemy"; // Tag of the target object
     public float moveSpeed = 3f; // Speed at which the enemy moves
-
+    private bool collisionDetected = false;
     private Transform target; // Reference to the target's transform
     private bool isMoving = true; // Flag to control enemy movement
 
     void Start()
     {
         // Find the GameObject with the specified tag
-        GameObject targetObject2 = GameObject.FindGameObjectWithTag(targetTag2);
         GameObject targetObject = GameObject.FindGameObjectWithTag(targetTag);
 
         // Get the transform component of the target GameObject
         if (targetObject != null)
         {
             target = targetObject.transform;
-            attackTag = targetTag;
         }
         else
         {
-            if (targetObject2 != null)
-            {
-                target = targetObject2.transform;
-                attackTag = targetTag2;
-            }
-            else
-            {
-                Debug.LogError("Target with tag '" + targetTag + "' not found!");
-            }
+           Debug.Log("Target with tag '" + targetTag + "' not found!");  
         }
     }
 
@@ -57,18 +45,26 @@ public class RangeAttack : MonoBehaviour
         }
     }
 
+
+    void OnCollisionExit(Collision collision)
+    {
+        collisionDetected = false;
+    }
+
+
     void OnCollisionEnter(Collision collision)
     {
 
         Debug.Log("Collision detected!");
         // Check if the collided object has the specified tag
-        if (collision.gameObject.CompareTag(attackTag))
+        if (collision.gameObject.CompareTag(targetTag) && collision.gameObject.transform == target && !collisionDetected)
         {
-           Health healthBar = collision.gameObject.GetComponent<Health>();
-           if (healthBar != null)
-           {
-               healthBar.TakeDamage(1f);
-           }
+            collisionDetected = true;
+            Health healthBar = collision.gameObject.GetComponent<Health>();
+            if (healthBar != null)
+            {
+                healthBar.TakeDamage(1f);
+            }
             // Enemy has collided with the target, stop moving
             isMoving = false;
             Destroy(gameObject);

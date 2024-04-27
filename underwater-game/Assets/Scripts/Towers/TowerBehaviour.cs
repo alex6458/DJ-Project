@@ -36,7 +36,6 @@ public class TowerBehaviour : MonoBehaviour
     {
         // Calculate spawn position slightly ahead of the enemy
         Vector3 spawnPosition = transform.position + transform.forward * bulletSpawnDistance;
-        Debug.Log("AQUI");
         // Spawn a bullet at the calculated position
         if (bulletPrefab != null)
         {
