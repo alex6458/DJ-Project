@@ -6,35 +6,32 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public Image HealthBarUi;
+    public Image HealthBarUi = null;
     private float fillamount = 0f;
     public float maxHealth = 10f;
-    private float currentHealth = 10f;
-
-
+    public float currentHealth = 10f;
 
     public void Start()
     {
         currentHealth = maxHealth;
-
     }
 
     void UpdateHealthBar()
     {
-
-
-        // Calculate the fill amount based on current health
-        fillamount = currentHealth / maxHealth;
-        HealthBarUi.fillAmount = fillamount;
-
-
+        if (HealthBarUi != null)
+        {
+            // Calculate the fill amount based on current health
+            fillamount = currentHealth / maxHealth;
+            HealthBarUi.fillAmount = fillamount;
+        }
     }
 
     // Method to take damage and update health bar
     public void TakeDamage(float damageAmount)
     {
 
-        Debug.Log("TAKING DAMAGE");
+        Debug.Log($"{gameObject.name} taking {damageAmount} damage");
+
         // Reduce current health
         currentHealth -= damageAmount;
 
@@ -48,9 +45,9 @@ public class Health : MonoBehaviour
         {
             if (gameObject.tag == "Base")
             {
-                //load defeat scene
+                Destroy(gameObject);
             }
-            else if(gameObject.tag == "Enemy" || gameObject.tag == "Friendly")
+            else if (gameObject.tag == "Enemy")
             {
                 Destroy(gameObject);
             }
