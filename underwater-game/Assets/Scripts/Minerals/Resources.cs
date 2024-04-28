@@ -7,6 +7,14 @@ public class Mineral : MonoBehaviour
     public float stone = 0f;
     public float iron = 0f;
     public float gold = 0f;
+    public CurrentResources currentResourcesScript;
+
+
+    public void Start()
+    {
+        if (currentResourcesScript == null)
+            Debug.Log("currentResourcesScript is Null");
+    }
 
     // Example method to add resources
     public void AddResources(float woodAmount, float stoneAmount, float ironAmount, float goldAmount)
@@ -17,6 +25,8 @@ public class Mineral : MonoBehaviour
         gold += goldAmount;
 
         Debug.Log("Current resources: Wood - " + wood + ", Stone - " + stone + ", Iron - " + iron + ", Gold - " + gold);
+
+        currentResourcesScript.UpdateText();
 
     }
 
@@ -30,6 +40,8 @@ public class Mineral : MonoBehaviour
             stone = stone - stoneAmount;
             iron = iron - ironAmount;
             gold = gold - goldAmount;
+
+            currentResourcesScript.UpdateText();
 
             return true;
         }

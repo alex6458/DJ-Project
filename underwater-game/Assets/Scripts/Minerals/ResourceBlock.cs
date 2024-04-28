@@ -6,7 +6,6 @@ public class ResourceBlock : MonoBehaviour
 {
 
     public Mineral playerResources;
-    public Camera myCamera;
     public float Resource1 = 0f;
     public float Resource2 = 0f;
     public float Resource3 = 0f;
