@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: isometric_pixel_0000
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 7db9fd7de725ff64e9851b06312f7002, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9924528, g: 0.9924528, b: 1, a: 0.47843137}
   m_Transform:
     e00: 1
     e01: 0
