@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7048c1ce5ed48488c69a635f556236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 100
+  attackRange: 500
   attackSpeed: 1
   attackDamage: 1
   posOffset: {x: 0, y: 0, z: 0}

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CreatureBase : MonoBehaviour
 {
