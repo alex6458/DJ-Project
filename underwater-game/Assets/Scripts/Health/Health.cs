@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public Image HealthBarUi = null;
     private float fillamount = 0f;
     public float maxHealth = 10f;
-    private float currentHealth = 10f;
+    public float currentHealth = 10f;
 
     public void Start()
     {
@@ -45,9 +45,9 @@ public class Health : MonoBehaviour
         {
             if (gameObject.tag == "Base")
             {
-                //load defeat scene
+                Destroy(gameObject);
             }
-            else if (gameObject.tag == "Enemy" || gameObject.tag == "Tower")
+            else if (gameObject.tag == "Enemy")
             {
                 Destroy(gameObject);
             }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CreatureBase : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CreatureBase : MonoBehaviour
     float attackRange = -1f;
     float attackSpeed = -1f;
     float moveSpeed = -1f;
+    float size = 0.1f;
     //Vector3 bodyOffset = Vector3.zero;
     //Vector3 tailOffset = Vector3.zero;
     Func<GameObject, GameObject, Func<GameObject, IEnumerator>, IEnumerator> doAttack = null;
@@ -22,6 +24,8 @@ public class CreatureBase : MonoBehaviour
 
     float currTime;
     float lastAttackTime;
+
+    GameObject lastTarget = null;
 
 
     // Start is called before the first frame update
@@ -39,13 +43,14 @@ public class CreatureBase : MonoBehaviour
         }
 
         bodyScript = body.GetComponent<BodyBase>();
-        if (bodyScript != null)
+        if (bodyScript == null)
         {
             Debug.Log("Missing Body Script");
             return;
         }
+
         tailScript = tail.GetComponent<TailBase>();
-        if (tailScript != null)
+        if (tailScript == null)
         {
             Debug.Log("Missing Tail Script");
             return;
@@ -76,6 +81,7 @@ public class CreatureBase : MonoBehaviour
         }
 
         GameObject closestTarget = null;
+        
         float minDist = float.MaxValue;
         float dist;
         foreach(var tc in targetCandidates)
@@ -88,14 +94,24 @@ public class CreatureBase : MonoBehaviour
             }
         }
 
-        if (minDist < attackRange && currTime-lastAttackTime > 1/attackSpeed)
+        if (closestTarget != null)
         {
-            StartCoroutine(doAttack(gameObject, closestTarget, tailEffect));
-        }
-        else
-        {
-            float step = moveSpeed/100 * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, closestTarget.transform.position, step);
+            Debug.Log($"Closest target at pos {closestTarget.transform.position}");
+
+            if (minDist < attackRange / 100)
+            {
+                if (currTime - lastAttackTime > 1 / attackSpeed)
+                {
+                    StartCoroutine(doAttack(gameObject, closestTarget, tailEffect));
+                    lastAttackTime = currTime;
+                }
+            }
+            else
+            {
+                float step = moveSpeed / 100 * Time.deltaTime;
+
+                transform.position = Vector3.MoveTowards(transform.position, closestTarget.transform.position, step);
+            }
         }
     }
 }

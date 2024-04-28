@@ -22,28 +22,33 @@ public class GlowySharkAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target != null && tailEffect != null)
+        if (target == null)
         {
-            if (!directionSet)
-            {
-                var direction = (target.transform.position - transform.position).normalized;
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
-
-            float step = attackMS / 100 * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+            Destroy(gameObject); 
+            return;
         }
+        //if (!directionSet)
+        //{
+        //    var direction = (target.transform.position - transform.position).normalized;
+        //    transform.rotation = Quaternion.LookRotation(direction);
+        //}
+
+        float step = attackMS / 100 * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(targetTag))
+        if (targetTag != null && collision.gameObject.CompareTag(targetTag))
         {
             var enemyHealthScript = collision.gameObject.GetComponent<Health>();
             if (enemyHealthScript != null)
             {
                 enemyHealthScript.TakeDamage(attackDMG);
-                enemyHealthScript.StartCoroutine(tailEffect(collision.gameObject));
+                if(tailEffect != null)
+                {
+                    enemyHealthScript.StartCoroutine(tailEffect(collision.gameObject));
+                }
             }
 
             Destroy(gameObject);
