@@ -31,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 3292120818128306103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -9}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 40, y: 40, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6237417899122896336}
@@ -109,7 +109,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3657650023541003931, guid: 1afd1c3b15e6a1640bdf87c630770e8f, type: 3}
   bulletSpawnDistance: 1
   targetTag: Enemy
-  attackSpeed: 2
+  attackSpeed: 0.6
 --- !u!65 &-7946333036488143470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBarUi: {fileID: 6027712498569484939}
-  maxHealth: 10
+  maxHealth: 60
   currentHealth: 10
 --- !u!1 &6950573503354763852
 GameObject:
