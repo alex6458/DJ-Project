@@ -95,7 +95,7 @@ public class CreatureBase : MonoBehaviour
 
         if (closestTarget != null)
         {
-            Debug.Log($"Closest target at pos {closestTarget.transform.position}");
+            //Debug.Log($"Closest target at pos {closestTarget.transform.position}");
 
             if (minDist < attackRange / 100)
             {

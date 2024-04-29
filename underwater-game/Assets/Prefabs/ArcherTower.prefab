@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 54932472381191923}
   - component: {fileID: -6283708893446935256}
   - component: {fileID: 5229927666360408969}
-  - component: {fileID: 8569919658055663966}
+  - component: {fileID: 6472259256911400395}
   - component: {fileID: 2541239820268930220}
   m_Layer: 8
   m_Name: ArcherTower
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 256554471
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0a0b70cfd52e574419e377163923b946, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -158,7 +158,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &8569919658055663966
+--- !u!114 &6472259256911400395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,11 +167,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2765503345581909049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba9278b11e98294cb239458913503ec, type: 3}
+  m_Script: {fileID: 11500000, guid: a051d671e1897ab4898ce18e62c7480a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBarUi: {fileID: 701754481008515827}
-  maxHealth: 5
+  maxHealth: 10
+  currentHealth: 10
 --- !u!114 &2541239820268930220
 MonoBehaviour:
   m_ObjectHideFlags: 0

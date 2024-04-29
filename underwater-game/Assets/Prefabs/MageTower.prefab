@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7946333036488143470}
   - component: {fileID: 5947449313405340128}
   - component: {fileID: 1375420184419275374}
+  - component: {fileID: 3069448160859300898}
   m_Layer: 8
   m_Name: MageTower
   m_TagString: Friendly
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 256554471
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0528d4dc9102ed149af7e44771f55305, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,6 +174,21 @@ MonoBehaviour:
   stoneCost: 10
   ironCost: 0
   goldCost: 5
+--- !u!114 &3069448160859300898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292120818128306103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a051d671e1897ab4898ce18e62c7480a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthBarUi: {fileID: 6027712498569484939}
+  maxHealth: 10
+  currentHealth: 10
 --- !u!1 &6950573503354763852
 GameObject:
   m_ObjectHideFlags: 0
