@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0f)
         {
-            if (gameObject.tag == "Base")
+            if (gameObject.tag == "Friendly")
             {
                 Destroy(gameObject);
             }
