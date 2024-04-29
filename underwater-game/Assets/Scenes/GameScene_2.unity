@@ -295,7 +295,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -397,7 +397,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Friendly
-  targetTag2: Base
+  targetTag2: Friendly
   moveSpeed: 2
   attackSpeed: 2
 --- !u!54 &970002328
@@ -1495,9 +1495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba9278b11e98294cb239458913503ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarUi: {fileID: 739465856}
+  HealthBarUi: {fileID: 0}
   fillamount: 0
-  maxHealth: 5
+  maxHealth: 10
   currentHealth: 10
 --- !u!1 &1021554316
 GameObject:
@@ -1600,7 +1600,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1654,7 +1654,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2040,6 +2040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  smoothFactor: 0
+  playerScale: 1
 --- !u!50 &1239020874
 Rigidbody2D:
   serializedVersion: 4
@@ -2350,7 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2070f09992588e641a35426b9a81b211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerResources: {fileID: 1239020876}
+  playerResources: {fileID: 0}
   towersPrefabs:
   - {fileID: 2765503345581909049, guid: de64a4255f9fb394986034f7cf842ba7, type: 3}
   - {fileID: 3292120818128306103, guid: ea1b6c00a5e01fa448949841ee6cc6f3, type: 3}
@@ -2542,7 +2544,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2596,7 +2598,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2790,7 +2792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Friendly
-  targetTag2: Base
+  targetTag2: Friendly
   moveSpeed: 0.5
   bulletPrefab: {fileID: 5455200483775984533, guid: 83277bfc4eff52f4a975e0363acea4f6, type: 3}
   bulletSpawnDistance: 1
@@ -2807,9 +2809,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba9278b11e98294cb239458913503ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarUi: {fileID: 1740540711}
+  HealthBarUi: {fileID: 0}
   fillamount: 0
-  maxHealth: 5
+  maxHealth: 10
   currentHealth: 10
 --- !u!212 &1700103221
 SpriteRenderer:
