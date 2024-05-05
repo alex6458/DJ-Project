@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 
 public class SpawnCreatures : MonoBehaviour
@@ -18,8 +19,14 @@ public class SpawnCreatures : MonoBehaviour
 
     public float spawn_interval = 5f;
 
-    float currTime;
-    float lastSpawnTime;
+    public float spawnInterval = 5f; 
+    public float timeBetweenWaves = 30f; 
+    public float difficultyIncreaseRate = 0.1f; 
+
+    public TextMeshProUGUI waveWarningText;
+    public GameObject waveWarningObject;
+
+    private int waveNumber = 0;
 
 
 
@@ -45,25 +52,37 @@ public class SpawnCreatures : MonoBehaviour
         var tail = tailPrefabs[random.Next(tailPrefabs.Length)];
         SpawnCreature(body, tail);
     }
-    
+
+
+    IEnumerator SpawnEnemyWave()
+    {
+        while (true)
+        {
+            waveNumber++;
+            waveWarningObject.SetActive(true);
+            waveWarningText.text = "Wave " + waveNumber + " incoming!"; // Update the warning message
+
+            yield return new WaitForSeconds(2f); // Display the warning for 2 seconds
+
+            waveWarningObject.SetActive(false); // Disable the warning text
+
+            // Calculate the number of enemies based on wave number
+            int numEnemies = waveNumber * 2;
+
+            for (int i = 0; i < numEnemies; i++)
+            {
+                CreateRandomCreature();
+                yield return new WaitForSeconds(spawnInterval);
+            }
+
+            yield return new WaitForSeconds(timeBetweenWaves);
+
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        currTime = Time.time;
-        lastSpawnTime = currTime;
+        StartCoroutine(SpawnEnemyWave());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        currTime += Time.deltaTime;
-
-        if (currTime - lastSpawnTime > spawn_interval)
-        {
-            CreateRandomCreature();
-            lastSpawnTime = currTime;
-        } 
-    }
-
 }
