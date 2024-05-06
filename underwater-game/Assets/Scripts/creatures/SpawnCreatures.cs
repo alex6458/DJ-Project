@@ -20,8 +20,8 @@ public class SpawnCreatures : MonoBehaviour
     public float spawn_interval = 5f;
 
     public float spawnInterval = 5f; 
-    public float timeBetweenWaves = 30f; 
-    public float difficultyIncreaseRate = 0.1f; 
+    public float timeBetweenWaves = 120f; 
+    public float difficultyIncreaseRate = 0.1f;   //tendo em conta a wave podemos usar este valor para ajustar parametros
 
     public TextMeshProUGUI waveWarningText;
     public GameObject waveWarningObject;
@@ -58,6 +58,8 @@ public class SpawnCreatures : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(timeBetweenWaves);
+
             waveNumber++;
             waveWarningObject.SetActive(true);
             waveWarningText.text = "Wave " + waveNumber + " incoming!"; // Update the warning message
@@ -74,9 +76,6 @@ public class SpawnCreatures : MonoBehaviour
                 CreateRandomCreature();
                 yield return new WaitForSeconds(spawnInterval);
             }
-
-            yield return new WaitForSeconds(timeBetweenWaves);
-
         }
     }
 
