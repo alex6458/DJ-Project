@@ -19,6 +19,7 @@ public class CreatureBase : MonoBehaviour
     Func<GameObject, IEnumerator> tailEffect = null;
 
     public string targetTag = "Base";
+    public string targetTag2 = "Player";
 
     float currTime;
     float lastAttackTime;
@@ -72,7 +73,15 @@ public class CreatureBase : MonoBehaviour
         currTime += Time.deltaTime;
 
         GameObject[] targetCandidates = GameObject.FindGameObjectsWithTag(targetTag);
-        if(targetCandidates == null)
+        GameObject[] targetCandidates2 = GameObject.FindGameObjectsWithTag(targetTag2);
+
+        // Combine the arrays
+        List<GameObject> combinedTargets = new List<GameObject>(targetCandidates);
+        combinedTargets.AddRange(targetCandidates2);
+
+        targetCandidates = combinedTargets.ToArray();
+
+        if (targetCandidates == null)
         {
             Debug.Log("No target candidates found");
             return;

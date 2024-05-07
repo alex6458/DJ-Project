@@ -46,13 +46,13 @@ public class RangeAttackTower : MonoBehaviour
     }
 
 
-    void OnCollisionExit(Collision collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         collisionDetected = false;
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
 
         Debug.Log("Collision detected!");

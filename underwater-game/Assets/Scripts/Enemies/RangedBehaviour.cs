@@ -70,7 +70,7 @@ public class RangedBehaviour : MonoBehaviour
     }
 
 
-    void OnCollisionExit(Collision collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         isMoving = true;
         collisionStay = false;
@@ -93,7 +93,7 @@ public class RangedBehaviour : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision detected!");
         // Check if the collided object has the specified tag

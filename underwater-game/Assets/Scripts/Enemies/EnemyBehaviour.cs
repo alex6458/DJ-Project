@@ -68,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // if there is no more collision
-    void OnCollisionExit(Collision collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         isMoving = true;
         collisionStay = false;
@@ -88,7 +88,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // the collision started
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         healthBar = collision.gameObject.GetComponent<Health>();
 

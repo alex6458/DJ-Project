@@ -26,7 +26,7 @@ public class TowerBehaviour : MonoBehaviour
     }
 
 
-    void OnCollisionExit(Collision collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         collisionStay = false;
     }
@@ -47,7 +47,7 @@ public class TowerBehaviour : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision detected!");
         // Check if the collided object has the specified tag

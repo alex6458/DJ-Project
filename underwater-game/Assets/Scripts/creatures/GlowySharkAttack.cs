@@ -37,7 +37,7 @@ public class GlowySharkAttack : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision detected!");
         if (targetTag != null && collision.gameObject.CompareTag(targetTag))

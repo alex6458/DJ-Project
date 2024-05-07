@@ -66,25 +66,37 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.velocity = movement * speed;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-        // Smooth out the movement
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, movement, ref currentVelocity, smoothFactor);
+        // Calculate the desired velocity based on input
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized * speed;
+
+        // Apply the velocity directly
+        rb.velocity = movement;
+
+        // Player Flip
+        if (moveHorizontal > 0 && !facingRight)
+        {
+            transform.localScale = new Vector3(playerScale, playerScale, playerScale);
+            facingRight = true;
+        }
+        else if (moveHorizontal < 0 && facingRight)
+        {
+            transform.localScale = new Vector3(-playerScale, playerScale, playerScale);
+            facingRight = false;
+        }
+
+        // Smooth out the movement (optional)
+        // rb.velocity = Vector2.SmoothDamp(rb.velocity, movement, ref currentVelocity, smoothFactor);
 
         // Stop the player if the velocity is too low
-        if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
+        if (Mathf.Abs(rb.velocity.x) < 0.1f)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
