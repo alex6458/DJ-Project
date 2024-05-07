@@ -39,10 +39,10 @@ public class GlowySharkAttack : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision detected!");
+        Debug.Log("Range attack detected collision");
         if (targetTag != null && collision.gameObject.CompareTag(targetTag))
         {
-            Debug.Log("Collision detected!");
+            Debug.Log("RANGE ATTACK DOING DAMAGE");
             var enemyHealthScript = collision.gameObject.GetComponent<Health>();
             if (enemyHealthScript != null)
             {

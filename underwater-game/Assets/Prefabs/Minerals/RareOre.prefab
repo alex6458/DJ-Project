@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff74594a3b4afbb459e58cb1d315edc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerResources: {fileID: 0}
   Resource1: 10
   Resource2: 20
   Resource3: 0
@@ -159,7 +158,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 5765452412803668818}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0

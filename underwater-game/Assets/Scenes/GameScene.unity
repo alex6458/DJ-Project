@@ -572,7 +572,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 206671094}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 971591811}
   - component: {fileID: 971591812}
   - component: {fileID: 971591813}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LowerLimit
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 971591809}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -1658,7 +1658,7 @@ GameObject:
   - component: {fileID: 1354417857}
   - component: {fileID: 1354417858}
   - component: {fileID: 1354417859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseLimit
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1742,7 +1742,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1354417855}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 1363484614}
   - component: {fileID: 1363484615}
   - component: {fileID: 1363484616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UpperLimit
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1900,7 +1900,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1363484612}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -1973,7 +1973,7 @@ GameObject:
   - component: {fileID: 1528642351}
   - component: {fileID: 1528642353}
   - component: {fileID: 1528642352}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2117,7 +2117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558852170}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BaseHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2201,7 +2201,7 @@ GameObject:
   - component: {fileID: 1678938933}
   - component: {fileID: 1678938935}
   - component: {fileID: 1678938934}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2571,6 +2571,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 998953223750574792, guid: 39483008b08e9374f87566f953d63e55, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998953223750574792, guid: 39483008b08e9374f87566f953d63e55, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998953223750574792, guid: 39483008b08e9374f87566f953d63e55, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2622054735095977440, guid: 39483008b08e9374f87566f953d63e55, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2606,6 +2618,10 @@ PrefabInstance:
     - target: {fileID: 6496675668163020138, guid: 39483008b08e9374f87566f953d63e55, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879301399779077982, guid: 39483008b08e9374f87566f953d63e55, type: 3}
+      propertyPath: speed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7896657804345172724, guid: 39483008b08e9374f87566f953d63e55, type: 3}
       propertyPath: m_Pivot.x

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5805328313504582142}
   - component: {fileID: 5464621940363579837}
   - component: {fileID: 7400151533099712781}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Gold
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff74594a3b4afbb459e58cb1d315edc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerResources: {fileID: 3400438534091343463, guid: 39483008b08e9374f87566f953d63e55, type: 3}
   Resource1: 0
   Resource2: 0
   Resource3: 0
@@ -114,7 +113,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2320831374182275439}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0

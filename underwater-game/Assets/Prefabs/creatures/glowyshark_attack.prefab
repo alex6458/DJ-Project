@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2652744559744180494}
   - component: {fileID: 6467325126037983225}
   - component: {fileID: 7126423134641521570}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: glowyshark_attack
-  m_TagString: Enemy
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 8166904589956248908}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &7126423134641521570
 BoxCollider2D:
