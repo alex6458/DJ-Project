@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 206671097}
   - component: {fileID: 206671101}
   - component: {fileID: 206671100}
+  - component: {fileID: 206671102}
   m_Layer: 10
   m_Name: underwater_base
   m_TagString: Friendly
@@ -589,6 +590,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &206671102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206671094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a74b29a24f9b04a85604fe66b673e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &284599150
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 284599152}
     - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: timeBetweenWaves
-      value: 1
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: waveWarningObject
