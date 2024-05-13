@@ -827,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 284599152}
     - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: timeBetweenWaves
-      value: 120
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: waveWarningObject

@@ -9,28 +9,25 @@ public class TowerBehaviour : MonoBehaviour
     public string targetTag = "Enemy"; // Tag of the target object
     public float attackSpeed = 2.0f; // Time interval between attacks in seconds
     private float lastAttackTime = 0f; // Time when the last attack occurred
-    private bool collisionStay = false;
+    private bool attacking = false; // Flag to indicate if currently attacking
+    private Transform target; // Reference to the current target
 
     void Update()
     {
-
-        if (collisionStay)
+        if (attacking && target != null)
         {
             // Check attack cooldown
             if (Time.time >= lastAttackTime + attackSpeed)
             {
-                // If cooldown is over, perform an attack
                 PerformAttack();
             }
         }
     }
 
-
-    void OnCollisionExit2D(Collision2D collision)
+    public void Die()
     {
-        collisionStay = false;
+        Destroy(gameObject);
     }
-
 
     void PerformAttack()
     {
@@ -46,15 +43,25 @@ public class TowerBehaviour : MonoBehaviour
         lastAttackTime = Time.time;
     }
 
-
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision detected!");
         // Check if the collided object has the specified tag
         if (collision.gameObject.CompareTag(targetTag))
         {
             Debug.Log("Enemy detected!");
-            collisionStay = true;
+            target = collision.transform;
+            attacking = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        // If the target exits the collision, stop attacking
+        if (collision.transform == target)
+        {
+            Debug.Log("Target lost!");
+            attacking = false;
+            target = null;
         }
     }
 }

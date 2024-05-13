@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff74594a3b4afbb459e58cb1d315edc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Resource1: 0
-  Resource2: 5
+  Resource1: 5
+  Resource2: 15
   Resource3: 10
   Resource4: 0
 --- !u!50 &264208459376220630

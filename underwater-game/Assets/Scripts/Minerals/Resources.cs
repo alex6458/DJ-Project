@@ -57,12 +57,12 @@ public class Mineral : MonoBehaviour
     public bool CheckResources(float woodAmount, float stoneAmount, float ironAmount, float goldAmount)
     {
 
-        if (woodAmount <= wood && stoneAmount <= stone && ironAmount <= iron && goldAmount <= gold)
+        if (woodAmount <= currentWood && stoneAmount <= currentStone && ironAmount <= currentIron && goldAmount <= currentGold)
         {
-            wood = wood - woodAmount;
-            stone = stone - stoneAmount;
-            iron = iron - ironAmount;
-            gold = gold - goldAmount;
+            currentWood = currentWood - woodAmount;
+            currentStone = currentStone - stoneAmount;
+            currentIron = currentIron - ironAmount;
+            currentGold = currentGold - goldAmount;
 
             currentResourcesScript.UpdateText();
 

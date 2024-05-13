@@ -45,7 +45,23 @@ public class Health : MonoBehaviour
         {
             if (gameObject.tag == "Friendly")
             {
-                Destroy(gameObject);
+                // Check if the component with the Die() function exists
+                BaseBehaviour dieableObject = gameObject.GetComponent<BaseBehaviour>();
+
+                // Call Die() function if the component exists
+                if (dieableObject != null)
+                {
+                    dieableObject.Die();
+                }
+                else
+                {
+                    TowerBehaviour TowerObject = gameObject.GetComponent<TowerBehaviour>();
+
+                    if (TowerObject != null)
+                    {
+                        TowerObject.Die();
+                    }
+                }
             }
             else if (gameObject.tag == "Enemy")
             {

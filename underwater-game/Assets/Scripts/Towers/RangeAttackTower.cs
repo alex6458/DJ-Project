@@ -4,7 +4,6 @@ public class RangeAttackTower : MonoBehaviour
 {
     public string targetTag = "Enemy"; // Tag of the target object
     public float moveSpeed = 3f; // Speed at which the enemy moves
-    private bool collisionDetected = false;
     private Transform target; // Reference to the target's transform
     private bool isMoving = true; // Flag to control enemy movement
 
@@ -46,27 +45,16 @@ public class RangeAttackTower : MonoBehaviour
     }
 
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        collisionDetected = false;
-    }
-
-
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        Debug.Log("Collision detected!");
         // Check if the collided object has the specified tag
-        if (collision.gameObject.CompareTag(targetTag) && collision.gameObject.transform == target && !collisionDetected)
+        if (collision.gameObject.CompareTag(targetTag))
         {
-            collisionDetected = true;
             Health healthBar = collision.gameObject.GetComponent<Health>();
             if (healthBar != null)
             {
                 healthBar.TakeDamage(1f);
             }
-            // Enemy has collided with the target, stop moving
-            isMoving = false;
             Destroy(gameObject);
         }
     }
