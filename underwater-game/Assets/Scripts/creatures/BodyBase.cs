@@ -9,6 +9,7 @@ public class BodyBase : MonoBehaviour
     public float attackSpeed = 1f;
     public float attackDamage = 1f;
     public Vector3 posOffset = Vector3.zero;
+    private AudioSource audioSource;
 
     public virtual IEnumerator doAttack(GameObject source, GameObject target, Func<GameObject, IEnumerator> tailEffect)
     {
@@ -20,6 +21,7 @@ public class BodyBase : MonoBehaviour
             yield break;
         }
 
+        audioSource.Play();
         targetScript.TakeDamage(attackDamage);
         targetScript.StartCoroutine(tailEffect(target));
     }
@@ -27,6 +29,15 @@ public class BodyBase : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+
+        // Get the existing AudioSource component
+        audioSource = GetComponent<AudioSource>();
+
+        // Optional: Check if the AudioSource component exists and log a warning if it doesn't
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource component not found on the game object.");
+        }
         //transform.Find("AttackRange").GetComponent<CircleCollider2D>().radius = attackRange/100;
         //if (gameObject != null)
         //{

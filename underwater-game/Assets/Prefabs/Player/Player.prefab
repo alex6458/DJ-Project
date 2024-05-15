@@ -266,10 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239624355187d1c46ac63777d81e6aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wood: 20
-  stone: 25
-  iron: 10
-  gold: 15
+  currentWood: 0
+  currentStone: 0
+  currentIron: 0
+  currentGold: 0
   currentResourcesScript: {fileID: 0}
 --- !u!61 &573993693636453510
 BoxCollider2D:

@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class BaseBehaviour : MonoBehaviour
 {
 
-    private Health healthScript; 
+    private Health healthScript;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -17,6 +18,15 @@ public class BaseBehaviour : MonoBehaviour
         if (healthScript == null)
         {
             Debug.LogError("HealthScript component not found on this GameObject!");
+        }
+
+        // Get the existing AudioSource component
+        audioSource = GetComponent<AudioSource>();
+
+        // Optional: Check if the AudioSource component exists and log a warning if it doesn't
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource component not found on the game object.");
         }
     }
 
@@ -58,6 +68,11 @@ public class BaseBehaviour : MonoBehaviour
         {
             // Get the Mineral script attached to the playerObject
             Mineral playerResources = playerObject.GetComponent<Mineral>();
+
+            if(audioSource != null)
+            {
+                audioSource.Play();
+            }
 
             // Check if the Mineral script was found
             if (playerResources != null)

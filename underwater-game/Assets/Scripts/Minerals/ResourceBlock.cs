@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class ResourceBlock : MonoBehaviour
 {
@@ -7,6 +9,22 @@ public class ResourceBlock : MonoBehaviour
     public float Resource3 = 0f;
     public float Resource4 = 0f;
     private bool collisionState = false;
+
+    private AudioSource audioSource;
+
+
+    private void Start()
+    {
+        // Get the existing AudioSource component
+        audioSource = GetComponent<AudioSource>();
+
+        // Optional: Check if the AudioSource component exists and log a warning if it doesn't
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource component not found on the game object.");
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,11 +60,19 @@ public class ResourceBlock : MonoBehaviour
             // Get the Mineral script attached to the playerObject
             Mineral playerResources = playerObject.GetComponent<Mineral>();
 
+
+
+
             // Check if the Mineral script was found
             if (playerResources != null)
             {
                 playerResources.StoreResources(Resource1, Resource2, Resource3, Resource4);
-                Destroy(gameObject);
+
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                    StartCoroutine(DestroyAfterSound(audioSource.clip.length));
+                }
             }
             else
             {
@@ -58,4 +84,12 @@ public class ResourceBlock : MonoBehaviour
             Debug.Log("No object with the 'Player' tag found");
         }
     }
+
+
+    private IEnumerator DestroyAfterSound(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+
 }

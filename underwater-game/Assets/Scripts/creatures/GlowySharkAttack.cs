@@ -11,12 +11,27 @@ public class GlowySharkAttack : MonoBehaviour
     public float attackMS = 100f;
     public float attackDMG = 1f;
 
+    private AudioSource audioSource;
+
     bool directionSet = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Get the existing AudioSource component
+        audioSource = GetComponent<AudioSource>();
+
+        // Optional: Check if the AudioSource component exists and log a warning if it doesn't
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource component not found on the game object.");
+        }
+        else
+        {
+            audioSource.Play();
+        }
+       
+
     }
 
     // Update is called once per frame
@@ -51,9 +66,9 @@ public class GlowySharkAttack : MonoBehaviour
                 {
                     enemyHealthScript.StartCoroutine(tailEffect(collision.gameObject));
                 }
-            }
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }
