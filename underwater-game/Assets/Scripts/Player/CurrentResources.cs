@@ -32,6 +32,6 @@ public class CurrentResources : MonoBehaviour
     public void UpdateText()
     {
         // Update TextMeshPro text to display tower cost
-        costText.text = ("Wood: " + ResourcesScript.currentWood + "            Stone: " + ResourcesScript.currentStone + "            Iron: " + ResourcesScript.currentIron + "            Gold: " + ResourcesScript.currentGold);
+        costText.text = ("Wood: " + ResourcesScript.wood + "            Stone: " + ResourcesScript.stone + "            Iron: " + ResourcesScript.iron + "            Gold: " + ResourcesScript.gold);
     }
 }

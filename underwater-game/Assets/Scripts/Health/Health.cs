@@ -67,6 +67,10 @@ public class Health : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            else if (gameObject.tag == "Player")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

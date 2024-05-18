@@ -8,6 +8,7 @@ public class BaseBehaviour : MonoBehaviour
 
     private Health healthScript;
     private AudioSource audioSource;
+    public Mineral mineralScript;
 
     private void Start()
     {
@@ -77,7 +78,8 @@ public class BaseBehaviour : MonoBehaviour
             // Check if the Mineral script was found
             if (playerResources != null)
             {
-                playerResources.AddResources();
+                mineralScript.AddResources(playerResources.wood , playerResources.stone , playerResources.iron , playerResources.gold);
+                playerResources.ResetResources();
             }
             else
             {

@@ -109,7 +109,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3657650023541003931, guid: 1afd1c3b15e6a1640bdf87c630770e8f, type: 3}
   bulletSpawnDistance: 1
   targetTag: Enemy
-  attackSpeed: 0.6
+  attackSpeed: 0.7
+  attackRange: 500
+  atttackDamage: 1
 --- !u!114 &1375420184419275374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &1127554714999198625
 Rigidbody2D:

@@ -3,14 +3,10 @@ using UnityEngine;
 public class Mineral : MonoBehaviour
 {
     // Define public variables for different types of resources
-    private float wood = 0f;
-    private float stone = 0f;
-    private float iron = 0f;
-    private float gold = 0f;
-    public float currentWood = 0f;
-    public float currentStone = 0f;
-    public float currentIron = 0f;
-    public float currentGold = 0f;
+    public float wood = 0f;
+    public float stone = 0f;
+    public float iron = 0f;
+    public float gold = 0f;
     public CurrentResources currentResourcesScript;
 
 
@@ -20,7 +16,7 @@ public class Mineral : MonoBehaviour
             Debug.Log("currentResourcesScript is Null");
     }
 
-
+    // Store Resources for the player
     public void StoreResources(float woodAmount, float stoneAmount, float ironAmount, float goldAmount)
     {
         wood += woodAmount;
@@ -30,26 +26,28 @@ public class Mineral : MonoBehaviour
 
         Debug.Log("Stored resources: Wood - " + wood + ", Stone - " + stone + ", Iron - " + iron + ", Gold - " + gold);
 
+    }
+
+    // Add resources to the base
+    public void AddResources(float woodAmount, float stoneAmount, float ironAmount, float goldAmount)
+    {
+        wood += woodAmount;
+        stone += stoneAmount;
+        iron += ironAmount;
+        gold += goldAmount;
+
+        Debug.Log("Current resources: Wood - " + wood + ", Stone - " + stone + ", Iron - " + iron + ", Gold - " + gold);
+
         currentResourcesScript.UpdateText();
 
     }
 
-    // Example method to add resources
-    public void AddResources()
+    public void ResetResources()
     {
-        currentWood += wood;
-        currentStone += stone;
-        currentIron += iron;
-        currentGold += gold;
-
         wood = 0;
         stone = 0;
         iron = 0;
         gold = 0;
-
-        Debug.Log("Current resources: Wood - " + currentWood + ", Stone - " + currentStone + ", Iron - " + currentIron + ", Gold - " + currentGold);
-
-        currentResourcesScript.UpdateText();
 
     }
 
@@ -57,14 +55,16 @@ public class Mineral : MonoBehaviour
     public bool CheckResources(float woodAmount, float stoneAmount, float ironAmount, float goldAmount)
     {
 
-        if (woodAmount <= currentWood && stoneAmount <= currentStone && ironAmount <= currentIron && goldAmount <= currentGold)
+        if (woodAmount <= wood && stoneAmount <= stone && ironAmount <= iron && goldAmount <= gold)
         {
-            currentWood = currentWood - woodAmount;
-            currentStone = currentStone - stoneAmount;
-            currentIron = currentIron - ironAmount;
-            currentGold = currentGold - goldAmount;
+            wood = wood - woodAmount;
+            stone = stone - stoneAmount;
+            iron = iron - ironAmount;
+            gold = gold - goldAmount;
+
 
             currentResourcesScript.UpdateText();
+            Debug.Log("Current resources: Wood - " + wood + ", Stone - " + stone + ", Iron - " + iron + ", Gold - " + gold);
 
             return true;
         }

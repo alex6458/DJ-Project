@@ -6,6 +6,7 @@ public class RangeAttackTower : MonoBehaviour
     public float moveSpeed = 3f; // Speed at which the enemy moves
     private Transform target; // Reference to the target's transform
     private bool isMoving = true; // Flag to control enemy movement
+    private float damage; // Damage that bullet does
 
     void Start()
     {
@@ -19,8 +20,9 @@ public class RangeAttackTower : MonoBehaviour
         }
         else
         {
-           Debug.Log("Target with tag '" + targetTag + "' not found!");  
+            Debug.Log("Target with tag '" + targetTag + "' not found!");
         }
+
     }
 
     void Update()
@@ -44,7 +46,6 @@ public class RangeAttackTower : MonoBehaviour
         }
     }
 
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collided object has the specified tag
@@ -53,9 +54,14 @@ public class RangeAttackTower : MonoBehaviour
             Health healthBar = collision.gameObject.GetComponent<Health>();
             if (healthBar != null)
             {
-                healthBar.TakeDamage(1f);
+                healthBar.TakeDamage(damage);
             }
             Destroy(gameObject);
         }
+    }
+
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
     }
 }

@@ -110,6 +110,8 @@ MonoBehaviour:
   bulletSpawnDistance: 1
   targetTag: Enemy
   attackSpeed: 0.4
+  attackRange: 500
+  atttackDamage: 2
 --- !u!114 &6472259256911400395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 7}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &3636608775624189660
 Rigidbody2D:
