@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 2643374549787269442}
   - component: {fileID: 4884384185429143222}
   - component: {fileID: 7116145345972002734}
-  - component: {fileID: 4139939628291846958}
   - component: {fileID: 4091647698146591743}
   - component: {fileID: 3699318761385518871}
   m_Layer: 3
@@ -255,22 +254,6 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &7116145345972002734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934605913537005199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58086ab043f6f0149bc2cafd16d3ad87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  woodCost: 0
-  stoneCost: 5
-  ironCost: 5
-  goldCost: 5
---- !u!114 &4139939628291846958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

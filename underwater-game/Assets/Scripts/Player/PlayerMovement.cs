@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
     [SerializeField] private float smoothFactor;
     [SerializeField] private float playerScale = 5.0f; // Needs to match the scale of the player object!
     private Vector2 currentVelocity = Vector2.zero;

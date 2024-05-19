@@ -110,8 +110,9 @@ MonoBehaviour:
   bulletSpawnDistance: 1
   targetTag: Enemy
   attackSpeed: 0.7
-  attackRange: 500
-  atttackDamage: 1
+  attackRange: 550
+  attackDamage: 1
+  towerType: Mage
 --- !u!114 &1375420184419275374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58086ab043f6f0149bc2cafd16d3ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodCost: 5
+  woodCost: 15
   stoneCost: 10
   ironCost: 0
   goldCost: 5

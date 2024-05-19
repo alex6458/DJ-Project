@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour
     public List<Image> towersUI;
     public Tilemap spawnTilemap;
     public Transform spawnTowerRoot;
+    public Stats towerStats;
 
     void Update()
     {
@@ -61,6 +62,42 @@ public class Spawner : MonoBehaviour
     {
         GameObject tower = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
         tower.transform.position = pos;
+
+
+        Health health = tower.GetComponent<Health>();
+        TowerBehaviour towerb = tower.GetComponent<TowerBehaviour>();
+        
+        if(towerb != null)
+        {
+            if(towerb.towerType == "Archer")
+            {
+                towerb.attackSpeed = towerStats.ArcherAttackSpeed;
+                towerb.attackDamage = towerStats.ArcherDamage;
+
+                if(health != null)
+                {
+                    health.maxHealth = towerStats.ArcherHealth;   
+                }
+                else
+                    Debug.Log("Health Script not found");
+            }
+            else if (towerb.towerType == "Mage")
+            {
+                towerb.attackSpeed = towerStats.MageAttackSpeed;
+                towerb.attackDamage = towerStats.MageDamage;
+
+                if (health != null)
+                {
+                    health.maxHealth = towerStats.MageHealth;
+                }
+                else
+                    Debug.Log("Health Script not found");
+            }
+        }
+        else
+        {
+            Debug.Log("Tower Behaviour script not found");
+        }
     }
 
     public void SelectTower(int id)

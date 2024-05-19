@@ -10,7 +10,8 @@ public class TowerBehaviour : MonoBehaviour
     public float attackSpeed = 2.0f; // Time interval between attacks in seconds
     public float attackRange = 5.0f; // Range within which the tower can attack
     private float lastAttackTime = 0f; // Time when the last attack occurred
-    public float atttackDamage = 1f; // Tower damage
+    public float attackDamage = 1f; // Tower damage
+    public string towerType = "None";
     private Transform target; // Reference to the current target
 
     void Update()
@@ -49,7 +50,7 @@ public class TowerBehaviour : MonoBehaviour
 
                 if (rangeAttack != null)
                 {
-                    rangeAttack.SetDamage(atttackDamage);
+                    rangeAttack.SetDamage(attackDamage);
                 }
             }
 

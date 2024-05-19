@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,16 @@ public class SpawnPlayer : MonoBehaviour
     public string playerTag = "Player";
     public Button spawnButton;
     public CameraFollow cameraFollow;
+    public Stats playerStats;
 
+
+    void Start()
+    {
+        if(playerStats == null)
+        {
+            Debug.Log("player Stats is Null.");
+        }
+    }
 
     void Update()
     {
@@ -38,6 +48,19 @@ public class SpawnPlayer : MonoBehaviour
             if (playerResources.CheckResources(towerCost.woodCost, towerCost.stoneCost, towerCost.ironCost, towerCost.goldCost))
             {
                 GameObject newPlayer = Instantiate(playerObject, spawnPos, Quaternion.identity);
+                Health health = newPlayer.GetComponent<Health>();
+                PlayerMovement movement = newPlayer.GetComponent<PlayerMovement>();
+
+                if (health != null)
+                {
+                    health.maxHealth = playerStats.playerHealth;
+                }
+
+                if (movement != null)
+                {
+                    movement.speed = playerStats.playerSpeed;
+                }
+
                 cameraFollow.player = newPlayer.transform;
             }
             else

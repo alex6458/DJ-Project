@@ -111,7 +111,8 @@ MonoBehaviour:
   targetTag: Enemy
   attackSpeed: 0.4
   attackRange: 500
-  atttackDamage: 2
+  attackDamage: 1
+  towerType: Archer
 --- !u!114 &6472259256911400395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58086ab043f6f0149bc2cafd16d3ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodCost: 5
+  woodCost: 20
   stoneCost: 10
   ironCost: 0
   goldCost: 0
