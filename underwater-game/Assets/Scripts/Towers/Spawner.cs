@@ -12,6 +12,24 @@ public class Spawner : MonoBehaviour
     public Tilemap spawnTilemap;
     public Transform spawnTowerRoot;
     public Stats towerStats;
+    private TutorialManager tutorialManager;
+
+    void Start()
+    {
+        tutorialManager = FindObjectOfType<TutorialManager>();
+
+        if (tutorialManager == null)
+            Debug.LogWarning("TutorialManager component not found.");
+
+        if (spawnTilemap == null)
+            Debug.LogWarning("SpawnTilemap component not found.");
+
+        if (spawnTowerRoot == null)
+            Debug.LogWarning("spawnTowerRoot component not found");
+
+        if (towerStats == null)
+            Debug.LogWarning("towerStats component not found");
+    }
 
     void Update()
     {
@@ -63,6 +81,8 @@ public class Spawner : MonoBehaviour
         GameObject tower = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
         tower.transform.position = pos;
 
+        if (tutorialManager.towerTutorial)
+            tutorialManager.OnBaseCollision();
 
         Health health = tower.GetComponent<Health>();
         TowerBehaviour towerb = tower.GetComponent<TowerBehaviour>();

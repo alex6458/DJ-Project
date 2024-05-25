@@ -60,9 +60,6 @@ public class ResourceBlock : MonoBehaviour
             // Get the Mineral script attached to the playerObject
             Mineral playerResources = playerObject.GetComponent<Mineral>();
 
-
-
-
             // Check if the Mineral script was found
             if (playerResources != null)
             {

@@ -1,27 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class BaseBehaviour : MonoBehaviour
+
+public class TutorialMineral : MonoBehaviour
 {
+    public float Resource1 = 0f;
+    public float Resource2 = 0f;
+    public float Resource3 = 0f;
+    public float Resource4 = 0f;
+    private bool collisionState = false;
 
-    private Health healthScript;
     private AudioSource audioSource;
-    public Mineral mineralScript;
     private TutorialManager tutorialManager;
+
+
 
     private void Start()
     {
-        // Get the HealthScript component attached to this GameObject
-        healthScript = GetComponent<Health>();
-
-        // Check if the HealthScript component was found
-        if (healthScript == null)
-        {
-            Debug.LogError("HealthScript component not found on this GameObject!");
-        }
-
         // Get the existing AudioSource component
         audioSource = GetComponent<AudioSource>();
 
@@ -33,7 +28,7 @@ public class BaseBehaviour : MonoBehaviour
 
         tutorialManager = FindObjectOfType<TutorialManager>();
 
-        if (tutorialManager == null)
+        if(tutorialManager  == null)
         {
             Debug.LogWarning("TutorialManager component not found.");
         }
@@ -44,30 +39,26 @@ public class BaseBehaviour : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            GetResources();
+            collisionState = true;
         }
-
     }
 
-    public void Die()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        // Check if the healthScript reference is valid
-        if (healthScript != null)
+        collisionState = false;
+    }
+
+    private void OnMouseOver()
+    {
+        // right click clicked and collision detected
+        if (Input.GetMouseButtonDown(1) && collisionState) // Change 1 to 0 for left click, 2 for middle click
         {
-            // Check if own health is less than or equal to zero
-            if (healthScript.currentHealth <= 0)
-            {
-                // Perform actions when own health is zero or below
-                SceneManager.LoadScene(2);
-            }
-        }
-        else
-        {
-            Debug.LogError("HealthScript reference is null!");
+            Debug.Log("Right clicked");
+            MineBlock();
         }
     }
 
-    private void GetResources()
+    private void MineBlock()
     {
         // Find the GameObject with the "Player" tag
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -78,20 +69,18 @@ public class BaseBehaviour : MonoBehaviour
             // Get the Mineral script attached to the playerObject
             Mineral playerResources = playerObject.GetComponent<Mineral>();
 
-            if(audioSource != null)
-            {
-                audioSource.Play();
-            }
-
             // Check if the Mineral script was found
             if (playerResources != null)
             {
-                mineralScript.AddResources(playerResources.wood , playerResources.stone , playerResources.iron , playerResources.gold);
+                playerResources.StoreResources(Resource1, Resource2, Resource3, Resource4);
 
-                if(tutorialManager.baseTutorial)
-                    tutorialManager.OnBaseCollision();
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                    tutorialManager.OnMineralMined();
 
-                playerResources.ResetResources();
+                    StartCoroutine(DestroyAfterSound(audioSource.clip.length));
+                }
             }
             else
             {
@@ -103,4 +92,12 @@ public class BaseBehaviour : MonoBehaviour
             Debug.Log("No object with the 'Player' tag found");
         }
     }
+
+
+    private IEnumerator DestroyAfterSound(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+
 }
