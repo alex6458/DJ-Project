@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58086ab043f6f0149bc2cafd16d3ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodCost: 20
+  woodCost: 15
   stoneCost: 10
   ironCost: 0
   goldCost: 0

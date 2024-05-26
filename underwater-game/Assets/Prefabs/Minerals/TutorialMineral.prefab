@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e6a426cee4afa48b6b0ea87d0125af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Resource1: 20
-  Resource2: 20
-  Resource3: 20
-  Resource4: 20
+  Resource1: 15
+  Resource2: 15
+  Resource3: 15
+  Resource4: 15

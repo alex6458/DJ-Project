@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -12,16 +11,20 @@ public class TutorialManager : MonoBehaviour
     public GameObject mineralSpawner;
     public GameObject creatureSpawner;
     public GameObject Mineral;
+    public Mineral mineralScript;
 
     public bool baseTutorial = false;
     public bool towerTutorial = false;
     private bool mineralSpawned = false;
+    private bool resources_added = false;
 
     //to check if the player clicks on the desired keys
     private bool wPressed = false;
     private bool aPressed = false;
     private bool sPressed = false;
     private bool dPressed = false;
+
+    private bool delayStarted = false;
 
     public void Update()
     {
@@ -32,7 +35,6 @@ public class TutorialManager : MonoBehaviour
                 popUps[i].SetActive(true);
             else
                 popUps[i].SetActive(false);
-
         }
 
         if (popUpIndex == 0 || popUpIndex == 1 || popUpIndex == 2)
@@ -45,21 +47,25 @@ public class TutorialManager : MonoBehaviour
         }
         else if (popUpIndex == 3)
         {
+            //give resources to the player so he can spawn a unit
+            if (!resources_added)
+            {
+                mineralScript.AddResources(5f, 5f, 5f, 5f);
+                resources_added = true;
+            }
+
             //Wait until the player spawns a "Player"
             CheckForPlayerSpawn();
-
         }
         else if (popUpIndex == 4)
         {
             //Wait for the player to use the desired keys to move
             CheckForMovementKeys();
-
         }
         else if (popUpIndex == 5)
         {
-            if(!mineralSpawned)
+            if (!mineralSpawned)
                 SpawnMineral();
-
         }
         else if (popUpIndex == 6)
         {
@@ -69,15 +75,44 @@ public class TutorialManager : MonoBehaviour
         {
             towerTutorial = true;
         }
+        else if (popUpIndex == 8)
+        {
+            if (!delayStarted)
+            {
+                StartCoroutine(CheckForLeftClickWithDelay());
+                delayStarted = true;
+            }
+        }
+        else if (popUpIndex == 9)
+        {
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                mineralSpawner.SetActive(true);
+                creatureSpawner.SetActive(true);
+                popUpIndex++;
+            }
+        }
     }
 
+    private IEnumerator CheckForLeftClickWithDelay()
+    {
+        yield return new WaitForSeconds(0.5f); 
+        while (popUpIndex == 8)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                popUpIndex++;
+            }
+            yield return null;
+        }
+        delayStarted = false;
+    }
 
     public void TowerTutorial()
     {
         popUpIndex++;
         Debug.Log("Tower spawned, popUpIndex incremented to " + popUpIndex);
         towerTutorial = false;
-
     }
 
     public void OnBaseCollision()
@@ -85,7 +120,6 @@ public class TutorialManager : MonoBehaviour
         popUpIndex++;
         Debug.Log("Base collision, popUpIndex incremented to " + popUpIndex);
         baseTutorial = false;
-
     }
 
     void CheckForPlayerSpawn()
@@ -106,7 +140,6 @@ public class TutorialManager : MonoBehaviour
         mineralSpawned = true;
         Vector3 position = new Vector3(1f, -2.86f, 0f);
         Instantiate(Mineral, position, Quaternion.identity);
-
     }
 
     void CheckForMovementKeys()
@@ -132,14 +165,11 @@ public class TutorialManager : MonoBehaviour
         {
             popUpIndex++;
         }
-
     }
-
 
     public void OnMineralMined()
     {
         popUpIndex++;
         Debug.Log("Mineral mined, popUpIndex incremented to " + popUpIndex);
     }
-
 }
