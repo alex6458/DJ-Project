@@ -37,59 +37,62 @@ public class TutorialManager : MonoBehaviour
                 popUps[i].SetActive(false);
         }
 
-        if (popUpIndex == 0 || popUpIndex == 1 || popUpIndex == 2)
+        if (!PauseMenu.IsPaused)
         {
-            //If player clicks Enter, Spacebar or LeftClick he goes to next dialogue box
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            if (popUpIndex == 0 || popUpIndex == 1 || popUpIndex == 2)
             {
-                popUpIndex++;
+                //If player clicks Enter, Spacebar or LeftClick he goes to next dialogue box
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                {
+                    popUpIndex++;
+                }
             }
-        }
-        else if (popUpIndex == 3)
-        {
-            //give resources to the player so he can spawn a unit
-            if (!resources_added)
+            else if (popUpIndex == 3)
             {
-                mineralScript.AddResources(5f, 5f, 5f, 5f);
-                resources_added = true;
-            }
+                //give resources to the player so he can spawn a unit
+                if (!resources_added)
+                {
+                    mineralScript.AddResources(5f, 5f, 5f, 5f);
+                    resources_added = true;
+                }
 
-            //Wait until the player spawns a "Player"
-            CheckForPlayerSpawn();
-        }
-        else if (popUpIndex == 4)
-        {
-            //Wait for the player to use the desired keys to move
-            CheckForMovementKeys();
-        }
-        else if (popUpIndex == 5)
-        {
-            if (!mineralSpawned)
-                SpawnMineral();
-        }
-        else if (popUpIndex == 6)
-        {
-            baseTutorial = true;
-        }
-        else if (popUpIndex == 7)
-        {
-            towerTutorial = true;
-        }
-        else if (popUpIndex == 8)
-        {
-            if (!delayStarted)
-            {
-                StartCoroutine(CheckForLeftClickWithDelay());
-                delayStarted = true;
+                //Wait until the player spawns a "Player"
+                CheckForPlayerSpawn();
             }
-        }
-        else if (popUpIndex == 9)
-        {
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            else if (popUpIndex == 4)
             {
-                mineralSpawner.SetActive(true);
-                creatureSpawner.SetActive(true);
-                popUpIndex++;
+                //Wait for the player to use the desired keys to move
+                CheckForMovementKeys();
+            }
+            else if (popUpIndex == 5)
+            {
+                if (!mineralSpawned)
+                    SpawnMineral();
+            }
+            else if (popUpIndex == 6)
+            {
+                baseTutorial = true;
+            }
+            else if (popUpIndex == 7)
+            {
+                towerTutorial = true;
+            }
+            else if (popUpIndex == 8)
+            {
+                if (!delayStarted)
+                {
+                    StartCoroutine(CheckForLeftClickWithDelay());
+                    delayStarted = true;
+                }
+            }
+            else if (popUpIndex == 9)
+            {
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                {
+                    mineralSpawner.SetActive(true);
+                    creatureSpawner.SetActive(true);
+                    popUpIndex++;
+                }
             }
         }
     }
