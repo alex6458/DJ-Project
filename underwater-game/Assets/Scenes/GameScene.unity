@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a0b70cfd52e574419e377163923b946, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5eb75eeb969da864e91fb162d3322840, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0528d4dc9102ed149af7e44771f55305, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b7a9da7188aed84995369bf84e39878, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2944,7 +2944,7 @@ PrefabInstance:
       objectReference: {fileID: 284599152}
     - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: timeBetweenWaves
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: waveWarningObject

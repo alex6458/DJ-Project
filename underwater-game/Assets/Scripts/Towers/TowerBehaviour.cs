@@ -45,7 +45,7 @@ public class TowerBehaviour : MonoBehaviour
             // Spawn a bullet at the calculated position
             if (bulletPrefab != null)
             {
-                GameObject bullet = Instantiate(bulletPrefab, spawnPosition, transform.rotation, transform.parent);
+                GameObject bullet = Instantiate(bulletPrefab, spawnPosition, bulletPrefab.transform.rotation, transform.parent);
                 RangeAttackTower rangeAttack = bullet.GetComponent<RangeAttackTower>();
 
                 if (rangeAttack != null)
