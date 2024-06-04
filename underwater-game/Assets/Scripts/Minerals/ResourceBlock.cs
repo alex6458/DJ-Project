@@ -9,6 +9,7 @@ public class ResourceBlock : MonoBehaviour
     public float Resource3 = 0f;
     public float Resource4 = 0f;
     private bool collisionState = false;
+    private bool mined = false;
 
     private AudioSource audioSource;
 
@@ -42,9 +43,10 @@ public class ResourceBlock : MonoBehaviour
     private void OnMouseOver()
     {
         // right click clicked and collision detected
-        if (Input.GetMouseButtonDown(1) && collisionState) // Change 1 to 0 for left click, 2 for middle click
+        if (Input.GetMouseButtonDown(1) && collisionState && !mined) // Change 1 to 0 for left click, 2 for middle click
         {
             Debug.Log("Right clicked");
+            mined = true;
             MineBlock();
         }
     }

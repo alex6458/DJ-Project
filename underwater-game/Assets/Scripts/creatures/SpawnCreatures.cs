@@ -19,9 +19,10 @@ public class SpawnCreatures : MonoBehaviour
 
     public float spawn_interval = 5f;
 
-    public float spawnInterval = 5f; 
-    public float timeBetweenWaves = 120f; 
-    public float difficultyIncreaseRate = 0.1f;   //tendo em conta a wave podemos usar este valor para ajustar parametros
+    public float spawnInterval = 5f;
+    public float timeBetweenWaves = 120f;
+    public float HealthIncrease = 1.3f;
+    public float DamageIncrease = 1.1f;
 
     public TextMeshProUGUI waveWarningText;
     public GameObject waveWarningObject;
@@ -70,6 +71,14 @@ public class SpawnCreatures : MonoBehaviour
 
             // Calculate the number of enemies based on wave number
             int numEnemies = waveNumber * 2;
+
+            base_creature.GetComponent<Health>().maxHealth *= HealthIncrease;
+            base_creature.GetComponent<Health>().currentHealth *= HealthIncrease;
+
+            foreach (GameObject prefab in bodyPrefabs)
+            {
+                prefab.GetComponent<BodyBase>().attackDamage *= DamageIncrease;
+            }
 
             for (int i = 0; i < numEnemies; i++)
             {

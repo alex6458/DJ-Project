@@ -9858,6 +9858,7 @@ GameObject:
   - component: {fileID: 1539871822}
   - component: {fileID: 1539871823}
   - component: {fileID: 1539871824}
+  - component: {fileID: 1539871825}
   m_Layer: 0
   m_Name: _Scripts
   m_TagString: Untagged
@@ -10079,6 +10080,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1803903374}
+--- !u!114 &1539871825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539871815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bedc3f42c0cd4ce40abc4d75d02cdbd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPrefabs:
+  - {fileID: 6639217328306077348, guid: 8ad153a24a9ab9b48b65373ecada35d3, type: 3}
+  - {fileID: 7704771031213236186, guid: 94b2763438387e948ac861b390b96856, type: 3}
+  base_creature: {fileID: 3215579018239650477, guid: 9f1947211f0c046469e9f111602ea8dd, type: 3}
 --- !u!1 &1551946434
 GameObject:
   m_ObjectHideFlags: 0
