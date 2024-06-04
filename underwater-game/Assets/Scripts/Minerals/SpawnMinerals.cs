@@ -10,13 +10,17 @@ public class SpawnMinerals : MonoBehaviour
     private int waveNumber = 0;
     private float randomValue = 0;
     private float randomX = 0;
+    private int lastStory = 0;
+    private int storyIndex = 0;
     public float timeBetweenWaves = 120f; // Add time between waves variable
+    public int storyWave = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Spawner()); // Start spawning coroutine
     }
+
 
     void CreateMinerals()
     {
@@ -46,6 +50,14 @@ public class SpawnMinerals : MonoBehaviour
 
             // Calculate the number of minerals based on wave number
             int numMinerals = waveNumber * 10;
+
+            if (waveNumber - lastStory == storyWave)
+            {
+                lastStory = waveNumber;
+                Instantiate(MineralsPrefabs[3], new Vector3(randomX, -3.01f, 0), Quaternion.identity);
+                storyIndex++;
+
+            }
 
             for (int i = 0; i < numMinerals; i++)
             {
