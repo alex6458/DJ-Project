@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] public float speed;
     [SerializeField] private float smoothFactor;
-    [SerializeField] private float playerScale = 5.0f; // Needs to match the scale of the player object!
+    [SerializeField] private float playerScale = 0.2f; // Needs to match the scale of the player object!
     private Vector2 currentVelocity = Vector2.zero;
     private bool facingRight = true;
     private Quaternion desiredRotation;

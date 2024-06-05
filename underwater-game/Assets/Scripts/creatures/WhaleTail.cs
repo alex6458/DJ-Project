@@ -23,6 +23,12 @@ public class WhaleTail : TailBase
 
         yield return new WaitForSeconds(0.5f);
 
+        if (target == null)
+        {
+            Destroy(explosionGameObject);
+            yield break;
+        }
+
         GameObject[] targetCandidates = GameObject.FindGameObjectsWithTag(target.tag);
 
         foreach (var candidate in targetCandidates)
@@ -39,7 +45,5 @@ public class WhaleTail : TailBase
                 targetScript.TakeDamage(explosionDamage);
             }
         }
-
-        Destroy(explosionGameObject);
     }
 }
