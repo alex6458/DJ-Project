@@ -7,11 +7,17 @@ public class StoryManager : MonoBehaviour
 {
     public GameObject[] popUps;
     public GameObject[] finalDialogue;
+    public GameObject[] winDialogue;
+
     public int popUpIndex = 0;
     private int DialogueIndex = 0;
+    private int WinIndex = 0;
+
     private bool storyShown = false;
     public SpawnCreatures spawnScript;
     private bool FinalWaveSpawned = false;
+
+
     void Update()
     {
 
@@ -54,9 +60,37 @@ public class StoryManager : MonoBehaviour
                 FinalWaveSpawned = true;
                 StartCoroutine(spawnScript.FinalWave());
             }
+
+
+            if(spawnScript.finalWave)
+            {
+
+                for (int i = 0; i < winDialogue.Length; i++)
+                {
+                    if (i == WinIndex)
+                        winDialogue[i].SetActive(true);
+                    else
+                        winDialogue[i].SetActive(false);
+                }
+
+
+                if (!PauseMenu.IsPaused)
+                {
+                    if (WinIndex < winDialogue.Length)
+                    {
+                        //If player clicks Enter, Spacebar or LeftClick he goes to next dialogue box
+                        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                        {
+                            WinIndex++;
+                        }
+                    }
+                }
+            }
         }
 
     }
+
+   
 
 
     public void ShowStory()

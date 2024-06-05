@@ -12,6 +12,7 @@ public class SpawnCreatures : MonoBehaviour
     public GameObject[] bodyPrefabs;
     public GameObject[] tailPrefabs;
     public GameObject base_creature;
+    public bool finalWave = false;
 
     private Coroutine a;
 
@@ -29,7 +30,7 @@ public class SpawnCreatures : MonoBehaviour
     public TextMeshProUGUI waveWarningText;
     public GameObject waveWarningObject;
 
-    private int waveNumber = 0;
+    public int waveNumber = 0;
 
 
 
@@ -96,7 +97,7 @@ public class SpawnCreatures : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        Debug.Log("FINAL WAVE DEFEATED");
+        finalWave = true;
     }
 
 
