@@ -9,6 +9,7 @@ public class Upgrades : MonoBehaviour
     public Canvas MageUpgrade;
     public Canvas ArcherUpgrade;
     public Mineral currentResources;
+    public AudioSource audioSource;
 
     public Stats playerStats;
 
@@ -103,57 +104,74 @@ public class Upgrades : MonoBehaviour
         switch (statType)
         {
             case StatType.PlayerHealth:
-                if(currentResources.CheckResources(0f, 20f, 0f, 0f)) 
+                if(currentResources.CheckResources(0f, 20f, 0f, 0f)){
                     playerStats.UpgradePlayerHealth(amount);
+                    audioSource.Play();
+                }
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
                 break;
             case StatType.PlayerSpeed:
-                if(currentResources.CheckResources(0f, 0f, 0f, 20f))
+                if(currentResources.CheckResources(0f, 0f, 0f, 20f)){
                     playerStats.UpgradePlayerSpeed(amount);
+                    audioSource.Play();
+                }
+                    
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
                 break;
             case StatType.MageHealth:
-                if (currentResources.CheckResources(0f, 20f, 0f, 0f))
+                if (currentResources.CheckResources(0f, 20f, 0f, 0f)){
                     playerStats.UpgradeMageHealth(amount);
+                    audioSource.Play();
+                }
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
                 break;
             case StatType.MageAttackSpeed:
-                if (currentResources.CheckResources(0f, 0f, 0f, 20f))
+                if (currentResources.CheckResources(0f, 0f, 0f, 20f)){
                     playerStats.UpgradeMageAttackSpeed(amount);
+                    audioSource.Play();
+                }
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
                 break;
             case StatType.MageDamage:
-                if (currentResources.CheckResources(0f, 0f, 30f, 0f))
+                if (currentResources.CheckResources(0f, 0f, 30f, 0f)){
                     playerStats.UpgradeMageDamage(amount);
+                    audioSource.Play();
+                }
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
                 break;
             case StatType.ArcherHealth:
-                if (currentResources.CheckResources(0f, 20f, 0f, 0f))
+                if (currentResources.CheckResources(0f, 20f, 0f, 0f)){
                     playerStats.UpgradeArcherHealth(amount);
+                    audioSource.Play();
+                }
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
                 break;
             case StatType.ArcherAttackSpeed:
-                if (currentResources.CheckResources(0f, 0f, 0f, 20f))
+                if (currentResources.CheckResources(0f, 0f, 0f, 20f)){
                     playerStats.UpgradeArcherAttackSpeed(amount);
+                    audioSource.Play();
+                }
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
                 break;
             case StatType.ArcherDamage:
-                if (currentResources.CheckResources(0f, 0f, 30f, 0f))
+                if (currentResources.CheckResources(0f, 0f, 30f, 0f)){
                     playerStats.UpgradeArcherDamage(amount);
+                    audioSource.Play();
+                }
                 else
                     Debug.Log("Not enough resources to upgrade.");
 
