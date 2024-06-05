@@ -35,7 +35,7 @@ public class TowerBehaviour : MonoBehaviour
         if (target != null)
         {
             // Check attack cooldown
-            if (Time.time >= lastAttackTime + attackSpeed)
+            if (Time.time >= lastAttackTime + 1f/attackSpeed)
             {
                 PerformAttack();
             }

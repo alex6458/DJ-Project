@@ -34,7 +34,18 @@ public class GlowySharkBody : BodyBase
             Debug.Log("No glowySharkAttackPrefab found");
             yield break;
         }
-        var glowySharkAttack = Instantiate(glowySharkAttackPrefab, source.transform.position + new Vector3(-1,0,0), Quaternion.identity);
+
+        GameObject glowySharkAttack;
+        if (target.tag == "Enemy")
+        {
+            glowySharkAttack = Instantiate(glowySharkAttackPrefab, source.transform.position + new Vector3(1f, 0, 0), Quaternion.identity);
+            glowySharkAttack.transform.Rotate(0f, 180f, 0f);
+        }
+        else
+        {
+            glowySharkAttack = Instantiate(glowySharkAttackPrefab, source.transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
+        }
+
         var gsaScript = glowySharkAttack.GetComponent<GlowySharkAttack>();
         if (gsaScript == null)
         {

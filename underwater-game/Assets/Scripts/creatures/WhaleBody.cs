@@ -34,7 +34,17 @@ public class WhaleBody : BodyBase
             Debug.Log("No whaleAttackPrefab found");
             yield break;
         }
-        var whaleAttack = Instantiate(whaleAttackPrefab, source.transform.position + new Vector3(-1,0,0), Quaternion.identity);
+
+        GameObject whaleAttack;
+        if (target.tag == "Enemy")
+        {
+            whaleAttack = Instantiate(whaleAttackPrefab, source.transform.position + new Vector3(1f, 0, 0), Quaternion.identity);
+            whaleAttack.transform.Rotate(0f, 180f, 0f);
+        }
+        else
+        {
+            whaleAttack = Instantiate(whaleAttackPrefab, source.transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
+        }
         var waScript = whaleAttack.GetComponent<WhaleAttack>();
         if (waScript == null)
         {

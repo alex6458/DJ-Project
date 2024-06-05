@@ -1,18 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class CreatureBase : MonoBehaviour
 {
     public GameObject body = null;
     public GameObject tail = null;
-    BodyBase bodyScript = null;
-    TailBase tailScript = null;
-    float attackRange = -1f;
-    float attackSpeed = -1f;
-    float moveSpeed = -1f;
-    float size = 0.1f;
+    public BodyBase bodyScript = null;
+    public TailBase tailScript = null;
+    public float attackRange = -1f;
+    public float attackSpeed = -1f;
+    public float moveSpeed = -1f;
+    public float size = 0.1f;
     //Vector3 bodyOffset = Vector3.zero;
     //Vector3 tailOffset = Vector3.zero;
     Func<GameObject, GameObject, Func<GameObject, IEnumerator>, IEnumerator> doAttack = null;
@@ -86,13 +87,16 @@ public class CreatureBase : MonoBehaviour
 
 
         GameObject[] targetCandidates = GameObject.FindGameObjectsWithTag(targetTag);
-        GameObject[] targetCandidates2 = GameObject.FindGameObjectsWithTag(targetTag2);
+        if (targetTag2 != "")
+        {
+            GameObject[] targetCandidates2 = GameObject.FindGameObjectsWithTag(targetTag2);
 
-        // Combine the arrays
-        List<GameObject> combinedTargets = new List<GameObject>(targetCandidates);
-        combinedTargets.AddRange(targetCandidates2);
+            // Combine the arrays
+            List<GameObject> combinedTargets = new List<GameObject>(targetCandidates);
+            combinedTargets.AddRange(targetCandidates2);
 
-        targetCandidates = combinedTargets.ToArray();
+            targetCandidates = combinedTargets.ToArray();
+        }
 
         if (targetCandidates == null || targetCandidates.Length == 0)
         {

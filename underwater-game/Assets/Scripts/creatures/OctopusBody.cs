@@ -35,7 +35,10 @@ public class OctopusBody : BodyBase
             Debug.Log("No whaleAttackPrefab found");
             yield break;
         }
+        if (target.tag == "Enemy") attackOffset.x *= -1;
+        if (target.tag == "Enemy") Debug.Log("AAAAAAAAAAAAAA" + attackOffset);
         var octopusAttack = Instantiate(octopusAttackPrefab, source.transform.position + attackOffset, Quaternion.identity);
+        octopusAttack.transform.Rotate(0f, 180f, 0f);
         var oaScript = octopusAttack.GetComponent<OctopusAttack>();
         if (oaScript == null)
         {

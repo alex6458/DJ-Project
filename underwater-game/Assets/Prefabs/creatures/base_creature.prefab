@@ -153,6 +153,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 0}
   tail: {fileID: 0}
+  bodyScript: {fileID: 0}
+  tailScript: {fileID: 0}
+  attackRange: -1
+  attackSpeed: -1
+  moveSpeed: -1
+  size: 0.1
   targetTag: Friendly
   targetTag2: Player
 --- !u!114 &2439559758579839748

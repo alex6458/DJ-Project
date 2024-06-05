@@ -64,7 +64,23 @@ public class WhaleAttack : MonoBehaviour
                 enemyHealthScript.TakeDamage(attackDMG);
                 if(tailEffect != null)
                 {
-                    enemyHealthScript.StartCoroutine(tailEffect(collision.gameObject));
+                    var scriptsGameObject = GameObject.Find("_Scripts");
+                    if (scriptsGameObject == null)
+                    {
+                        Debug.Log("Scripts Game Object not found");
+                    }
+                    else
+                    {
+                        var scriptsOTE = scriptsGameObject.GetComponent<overTimeEffects>();
+                        if (scriptsOTE == null)
+                        {
+                            Debug.Log("OTE Script not found");
+                        }
+                        else
+                        {
+                            scriptsOTE.StartCoroutine(tailEffect(collision.gameObject));
+                        }
+                    }
                 }
 
                 Destroy(gameObject);
