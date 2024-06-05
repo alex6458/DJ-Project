@@ -16,6 +16,18 @@ public class TowerBehaviour : MonoBehaviour
 
     void Update()
     {
+        var healthScript = GetComponent<Health>();
+        if (healthScript == null)
+        {
+            Debug.Log("No healthScript found");
+            return;
+        }
+
+        if (healthScript.stunned)
+        {
+            return;
+        }
+
         // Find the closest target within range
         FindTarget();
 

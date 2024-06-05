@@ -72,6 +72,19 @@ public class CreatureBase : MonoBehaviour
     {
         currTime += Time.deltaTime;
 
+        var healthScript = GetComponent<Health>();
+        if (healthScript == null)
+        {
+            Debug.Log("No healthScript found");
+            return;
+        }
+
+        if (healthScript.stunned)
+        {
+            return;
+        }
+
+
         GameObject[] targetCandidates = GameObject.FindGameObjectsWithTag(targetTag);
         GameObject[] targetCandidates2 = GameObject.FindGameObjectsWithTag(targetTag2);
 
@@ -81,7 +94,7 @@ public class CreatureBase : MonoBehaviour
 
         targetCandidates = combinedTargets.ToArray();
 
-        if (targetCandidates == null)
+        if (targetCandidates == null || targetCandidates.Length == 0)
         {
             Debug.Log("No target candidates found");
             return;

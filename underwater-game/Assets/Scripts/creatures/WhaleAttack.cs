@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlowySharkAttack : MonoBehaviour
+public class WhaleAttack : MonoBehaviour
 {
     public GameObject target = null;
     public string targetTag = null;
@@ -30,13 +30,7 @@ public class GlowySharkAttack : MonoBehaviour
         {
             audioSource.Play();
         }
-
-        if (target == null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+       
 
     }
 

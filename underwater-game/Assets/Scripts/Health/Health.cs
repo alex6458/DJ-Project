@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     private float fillamount = 0f;
     public float maxHealth = 10f;
     public float currentHealth = 10f;
+    public bool stunned = false;
 
     public void Start()
     {

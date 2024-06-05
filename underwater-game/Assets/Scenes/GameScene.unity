@@ -1252,6 +1252,7 @@ MonoBehaviour:
   HealthBarUi: {fileID: 1678938934}
   maxHealth: 100
   currentHealth: 10
+  stunned: 0
 --- !u!212 &206671099
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1497,10 +1498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239624355187d1c46ac63777d81e6aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wood: 0
-  stone: 0
-  iron: 0
-  gold: 0
+  wood: 1000
+  stone: 1000
+  iron: 1000
+  gold: 1000
   currentResourcesScript: {fileID: 1081114350}
 --- !u!1 &207947305
 GameObject:
@@ -2943,10 +2944,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 284599152}
     - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
-      propertyPath: timeBetweenWaves
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2595787444963803188, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: waveWarningObject
       value: 
       objectReference: {fileID: 771794902}
@@ -2993,10 +2990,6 @@ PrefabInstance:
     - target: {fileID: 5579531797792765196, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
       propertyPath: m_Name
       value: creature_manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579531797792765196, guid: 46c22682b5ae6bf4eb44fc644645cd08, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13478,7 +13471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 2.557, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.05, y: -2.64}
+  m_AnchoredPosition: {x: -4.128, y: -2.625}
   m_SizeDelta: {x: 13.7114, y: 9.2228}
   m_Pivot: {x: 0.14738935, y: 0.14983852}
 --- !u!1 &2109758770
