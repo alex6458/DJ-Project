@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4171817033446591876
 Transform:
   m_ObjectHideFlags: 0
@@ -45,12 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPrefabs:
-  - {fileID: 6639217328306077348, guid: 8ad153a24a9ab9b48b65373ecada35d3, type: 3}
-  - {fileID: 7704771031213236186, guid: 94b2763438387e948ac861b390b96856, type: 3}
+  - {fileID: 4500336643493127468, guid: 0f571feb6b50c3949aa65289ebf2f7de, type: 3}
   tailPrefabs:
-  - {fileID: 866605324762566523, guid: e6a8ec1bb3adbf14ea96abbe02d507b0, type: 3}
-  - {fileID: 5009619450091175516, guid: 97ae8ee314d845147aded334b1ca59a8, type: 3}
+  - {fileID: 6035791975964063726, guid: dc74ceae70237764499fd86a8b219cd9, type: 3}
   base_creature: {fileID: 3215579018239650477, guid: 9f1947211f0c046469e9f111602ea8dd, type: 3}
   default_body_pos: {x: 0, y: 0, z: -0.05}
-  default_tail_pos: {x: 1.1, y: 0, z: -0.04}
+  default_tail_pos: {x: 0.7, y: 0, z: -0.04}
+  default_creature_pos: {x: 5, y: 1, z: 0}
   spawn_interval: 5
+  spawnInterval: 5
+  timeBetweenWaves: 120
+  difficultyIncreaseRate: 0.1
+  waveWarningText: {fileID: 0}
+  waveWarningObject: {fileID: 0}

@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlowySharkBody : BodyBase
+public class WhaleBody : BodyBase
 {
-    public GameObject glowySharkAttackPrefab = null;
+    public GameObject whaleAttackPrefab = null;
 
     public override IEnumerator doAttack(GameObject source, GameObject target, Func<GameObject, IEnumerator> tailEffect)
     {
@@ -29,32 +29,31 @@ public class GlowySharkBody : BodyBase
             yield break;
         }
 
-        if(glowySharkAttackPrefab == null)
+        if(whaleAttackPrefab == null)
         {
-            Debug.Log("No glowySharkAttackPrefab found");
+            Debug.Log("No whaleAttackPrefab found");
             yield break;
         }
 
-        GameObject glowySharkAttack;
+        GameObject whaleAttack;
         if (target.tag == "Enemy")
         {
-            glowySharkAttack = Instantiate(glowySharkAttackPrefab, source.transform.position + new Vector3(1f, 0, 0), Quaternion.identity);
-            glowySharkAttack.transform.Rotate(0f, 180f, 0f);
+            whaleAttack = Instantiate(whaleAttackPrefab, source.transform.position + new Vector3(1f, 0, 0), Quaternion.identity);
+            whaleAttack.transform.Rotate(0f, 180f, 0f);
         }
         else
         {
-            glowySharkAttack = Instantiate(glowySharkAttackPrefab, source.transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
+            whaleAttack = Instantiate(whaleAttackPrefab, source.transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
         }
-
-        var gsaScript = glowySharkAttack.GetComponent<GlowySharkAttack>();
-        if (gsaScript == null)
+        var waScript = whaleAttack.GetComponent<WhaleAttack>();
+        if (waScript == null)
         {
-            Debug.Log("No GlowySharkAttack script found");
+            Debug.Log("No WhaleAttack script found");
             yield break;
         }
 
-        gsaScript.target = target;
-        gsaScript.tailEffect = tailEffect;
-        gsaScript.targetTag = target.tag;
+        waScript.target = target;
+        waScript.tailEffect = tailEffect;
+        waScript.targetTag = target.tag;
     }
 }

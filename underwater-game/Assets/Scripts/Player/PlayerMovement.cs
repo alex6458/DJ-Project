@@ -25,6 +25,20 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        var healthScript = GetComponent<Health>();
+        if (healthScript == null)
+        {
+            Debug.Log("No healthScript found");
+            return;
+        }
+
+        if (healthScript.stunned)
+        {
+            return;
+        }
+
+
         Movement(); // Movement should be in fixed update
 
         float moveHorizontal = Input.GetAxis("Horizontal");
