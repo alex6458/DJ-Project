@@ -13,6 +13,8 @@ public class SpawnCreatures : MonoBehaviour
     public GameObject[] tailPrefabs;
     public GameObject base_creature;
 
+    private Coroutine a;
+
     public Vector3 default_body_pos = new Vector3(0f, 0f, 0f);
     public Vector3 default_tail_pos = new Vector3(0f, 0f, 0f);
     public Vector3 default_creature_pos = new Vector3(5f, 1f, 0f);
@@ -33,7 +35,10 @@ public class SpawnCreatures : MonoBehaviour
 
     public void SpawnCreature(GameObject body, GameObject tail)
     {
-        var creature = Instantiate(base_creature, default_creature_pos, Quaternion.identity);
+
+        var newPos = new Vector3(5f, UnityEngine.Random.Range(-2.5f, 2.5f) , 0f);
+
+        var creature = Instantiate(base_creature, newPos, Quaternion.identity);
 
         var body_pos = creature.transform.localPosition + default_body_pos + body.GetComponent<BodyBase>().posOffset;
         var creature_body = Instantiate(body, body_pos, Quaternion.identity, creature.transform);
@@ -44,6 +49,8 @@ public class SpawnCreatures : MonoBehaviour
         var creature_script = creature.GetComponent<CreatureBase>();
         creature_script.body = creature_body;
         creature_script.tail = creature_tail;
+
+
     }
 
     public void CreateRandomCreature()
@@ -52,6 +59,34 @@ public class SpawnCreatures : MonoBehaviour
         var body = bodyPrefabs[random.Next(bodyPrefabs.Length)];
         var tail = tailPrefabs[random.Next(tailPrefabs.Length)];
         SpawnCreature(body, tail);
+    }
+
+    public IEnumerator FinalWave()
+    {
+        StopCoroutine(a);
+
+        waveNumber++;
+        waveWarningObject.SetActive(true);
+        waveWarningText.text = "Final Wave" + " incoming!"; // Update the warning message
+
+        yield return new WaitForSeconds(2f); // Display the warning for 2 seconds
+
+        waveWarningObject.SetActive(false); // Disable the warning text
+
+        int numEnemies = waveNumber * 5;
+
+        foreach (GameObject prefab in bodyPrefabs)
+        {
+            prefab.GetComponent<BodyBase>().attackDamage *= DamageIncrease;
+        }
+
+        for (int i = 0; i < numEnemies; i++)
+        {
+            CreateRandomCreature();
+            yield return new WaitForSeconds(spawnInterval/2);
+        }
+
+
     }
 
 
@@ -91,6 +126,6 @@ public class SpawnCreatures : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemyWave());
+       a = StartCoroutine(SpawnEnemyWave());
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SpawnMinerals : MonoBehaviour
 {
@@ -14,10 +15,16 @@ public class SpawnMinerals : MonoBehaviour
     private int storyIndex = 0;
     public float timeBetweenWaves = 120f; // Add time between waves variable
     public int storyWave = 5;
+    public StoryManager story;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(story == null)
+        {
+            Debug.Log("Story manager not found.");
+        }
+
         StartCoroutine(Spawner()); // Start spawning coroutine
     }
 
@@ -51,7 +58,7 @@ public class SpawnMinerals : MonoBehaviour
             // Calculate the number of minerals based on wave number
             int numMinerals = waveNumber * 10;
 
-            if (waveNumber - lastStory == storyWave)
+            if (waveNumber - lastStory == storyWave && story.popUps.Count() != storyIndex)
             {
                 lastStory = waveNumber;
                 Instantiate(MineralsPrefabs[3], new Vector3(randomX, -3.01f, 0), Quaternion.identity);
