@@ -78,20 +78,29 @@ public class BaseBehaviour : MonoBehaviour
             // Get the Mineral script attached to the playerObject
             Mineral playerResources = playerObject.GetComponent<Mineral>();
 
-            if(audioSource != null)
-            {
-                audioSource.Play();
-            }
-
             // Check if the Mineral script was found
             if (playerResources != null)
             {
-                mineralScript.AddResources(playerResources.wood , playerResources.stone , playerResources.iron , playerResources.gold);
+
+                if(playerResources.isPoor == false) // Player has resources to deposit
+                {
+
+                    if(audioSource != null)
+                    {
+                        audioSource.Play();
+                    }
+
+                    mineralScript.AddResources(playerResources.wood , playerResources.stone , playerResources.iron , playerResources.gold);
+                    playerResources.ResetResources();
+                }
+                else
+                {
+                    Debug.Log("Player has no resources to deposit");
+                }
 
                 if(tutorialManager.baseTutorial)
                     tutorialManager.OnBaseCollision();
 
-                playerResources.ResetResources();
             }
             else
             {

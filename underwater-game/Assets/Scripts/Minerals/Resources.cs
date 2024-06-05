@@ -7,6 +7,7 @@ public class Mineral : MonoBehaviour
     public float stone = 0f;
     public float iron = 0f;
     public float gold = 0f;
+    public bool isPoor = true;
     public CurrentResources currentResourcesScript;
 
 
@@ -23,6 +24,9 @@ public class Mineral : MonoBehaviour
         stone += stoneAmount;
         iron += ironAmount;
         gold += goldAmount;
+
+        if(wood > 0 || stone > 0 || iron > 0 || gold > 0)
+            isPoor = false;
 
         Debug.Log("Stored resources: Wood - " + wood + ", Stone - " + stone + ", Iron - " + iron + ", Gold - " + gold);
 
@@ -44,11 +48,12 @@ public class Mineral : MonoBehaviour
 
     public void ResetResources()
     {
+        Debug.Log("Resetting resources");
         wood = 0;
         stone = 0;
         iron = 0;
         gold = 0;
-
+        isPoor = true;
     }
 
 
@@ -70,6 +75,11 @@ public class Mineral : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool isResourcePoor()
+    {
+        return isPoor;
     }
 
 }
