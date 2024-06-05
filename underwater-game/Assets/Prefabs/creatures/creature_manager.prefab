@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5579531797792765196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4171817033446591876}
+  - component: {fileID: 2595787444963803188}
+  m_Layer: 0
+  m_Name: creature_manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4171817033446591876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5579531797792765196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2595787444963803188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5579531797792765196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afd6fe12ea31484798f2fa9f1baa10a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPrefabs:
+  - {fileID: 4500336643493127468, guid: 0f571feb6b50c3949aa65289ebf2f7de, type: 3}
+  tailPrefabs:
+  - {fileID: 6035791975964063726, guid: dc74ceae70237764499fd86a8b219cd9, type: 3}
+  base_creature: {fileID: 3215579018239650477, guid: 9f1947211f0c046469e9f111602ea8dd, type: 3}
+  default_body_pos: {x: 0, y: 0, z: -0.05}
+  default_tail_pos: {x: 0.7, y: 0, z: -0.04}
+  default_creature_pos: {x: 5, y: 1, z: 0}
+  spawn_interval: 5
+  spawnInterval: 5
+  timeBetweenWaves: 120
+  difficultyIncreaseRate: 0.1
+  waveWarningText: {fileID: 0}
+  waveWarningObject: {fileID: 0}
