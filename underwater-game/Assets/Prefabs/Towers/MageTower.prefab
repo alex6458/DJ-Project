@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7fa82c7bc18574b8950c571a97541b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3657650023541003931, guid: 1afd1c3b15e6a1640bdf87c630770e8f, type: 3}
+  bulletPrefab: {fileID: 5125981718466998957, guid: 9f3efd4925b01e4439c978e3e01b16f0, type: 3}
   bulletSpawnDistance: 1
   targetTag: Enemy
   attackSpeed: 0.7
