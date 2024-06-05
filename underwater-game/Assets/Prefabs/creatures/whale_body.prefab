@@ -213,9 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450db2443bb7d0743b4747707d31a7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 500
-  attackSpeed: 0.8
-  attackDamage: 1
+  attackRange: 400
+  attackSpeed: 0.7
+  attackDamage: 1.4172488
   posOffset: {x: 0, y: 0, z: 0}
   whaleAttackPrefab: {fileID: 4551386938489646931, guid: 6ff5a8a1cd35de541a479690aac80235, type: 3}
 --- !u!1 &5014417552454806309

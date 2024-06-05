@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour
@@ -44,6 +45,13 @@ public class TowerBehaviour : MonoBehaviour
 
     public void Die()
     {
+
+        var script = GameObject.Find("_Scripts");
+
+        var spawner = script.GetComponent<Spawner>();
+
+        var cellPosDefault = spawner.spawnTilemap.WorldToCell(transform.position);
+        spawner.spawnTilemap.SetColliderType(cellPosDefault, Tile.ColliderType.Sprite);
         Destroy(gameObject);
     }
 

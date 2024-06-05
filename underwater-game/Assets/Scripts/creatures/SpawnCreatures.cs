@@ -12,6 +12,7 @@ public class SpawnCreatures : MonoBehaviour
     public GameObject[] bodyPrefabs;
     public GameObject[] tailPrefabs;
     public GameObject base_creature;
+    public bool finalWave = false;
 
     private Coroutine a;
 
@@ -29,11 +30,11 @@ public class SpawnCreatures : MonoBehaviour
     public TextMeshProUGUI waveWarningText;
     public GameObject waveWarningObject;
 
-    private int waveNumber = 0;
+    public int waveNumber = 0;
 
 
 
-    public void SpawnCreature(GameObject body, GameObject tail)
+    public GameObject SpawnCreature(GameObject body, GameObject tail)
     {
 
         var newPos = new Vector3(5f, UnityEngine.Random.Range(-2.5f, 2.5f) , 0f);
@@ -50,15 +51,15 @@ public class SpawnCreatures : MonoBehaviour
         creature_script.body = creature_body;
         creature_script.tail = creature_tail;
 
-
+        return creature;
     }
 
-    public void CreateRandomCreature()
+    public GameObject CreateRandomCreature()
     {
         var random = new System.Random();
         var body = bodyPrefabs[random.Next(bodyPrefabs.Length)];
         var tail = tailPrefabs[random.Next(tailPrefabs.Length)];
-        SpawnCreature(body, tail);
+        return SpawnCreature(body, tail);
     }
 
     public IEnumerator FinalWave()
@@ -67,7 +68,7 @@ public class SpawnCreatures : MonoBehaviour
 
         waveNumber++;
         waveWarningObject.SetActive(true);
-        waveWarningText.text = "Final Wave" + " incoming!"; // Update the warning message
+        waveWarningText.text = "Final Wave incoming!"; // Update the warning message
 
         yield return new WaitForSeconds(2f); // Display the warning for 2 seconds
 
@@ -80,13 +81,23 @@ public class SpawnCreatures : MonoBehaviour
             prefab.GetComponent<BodyBase>().attackDamage *= DamageIncrease;
         }
 
+        List<GameObject> enemies = new List<GameObject>();
+
         for (int i = 0; i < numEnemies; i++)
         {
-            CreateRandomCreature();
+            enemies.Add(CreateRandomCreature());
             yield return new WaitForSeconds(spawnInterval/2);
         }
 
 
+        while (enemies.Count > 0)
+        {
+            enemies.RemoveAll(enemy => enemy == null || enemy.CompareTag("Untagged"));
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        finalWave = true;
     }
 
 

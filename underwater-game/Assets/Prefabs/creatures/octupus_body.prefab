@@ -445,9 +445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beeebcbf4b5ada34cbb41f8bf820492f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 500
-  attackSpeed: 1
-  attackDamage: 1
+  attackRange: 350
+  attackSpeed: 0.6
+  attackDamage: 1.0717945
   posOffset: {x: 0.5, y: 0, z: 0}
   octopusAttackPrefab: {fileID: 5990387380468561189, guid: 42315bcc5a1dc2a4db585171da2745d9, type: 3}
   attackOffset: {x: -1, y: 0, z: 0}

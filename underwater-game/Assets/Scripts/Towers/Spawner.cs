@@ -50,6 +50,8 @@ public class Spawner : MonoBehaviour
             var cellPosDefault = spawnTilemap.WorldToCell(mousePos);
             var cellPosCentered = spawnTilemap.GetCellCenterWorld(cellPosDefault);
 
+            Debug.Log(spawnTilemap.GetColliderType(cellPosDefault));
+
             if (spawnTilemap.GetColliderType(cellPosDefault) == Tile.ColliderType.Sprite)
             {
                 cellPosCentered = new Vector3(cellPosCentered.x, cellPosCentered.y, 0);
