@@ -32,6 +32,6 @@ public class UpdateTowerCostText : MonoBehaviour
     void UpdateText()
     {
         // Update TextMeshPro text to display tower cost
-        costText.text = ("Wood: " + towerCostScript.woodCost + "\nStone: " + towerCostScript.stoneCost + "\nIron: " + towerCostScript.ironCost + "\nGold: " + towerCostScript.goldCost);
+        costText.text = (towerCostScript.woodCost + " W " + towerCostScript.stoneCost + " S\n" + towerCostScript.ironCost + " I " + towerCostScript.goldCost + " G");
     }
 }

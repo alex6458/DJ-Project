@@ -109,9 +109,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5125981718466998957, guid: 9f3efd4925b01e4439c978e3e01b16f0, type: 3}
   bulletSpawnDistance: 1
   targetTag: Enemy
-  attackSpeed: 0.7
+  attackSpeed: 0.4
   attackRange: 550
-  attackDamage: 1
+  attackDamage: 1.2
   towerType: Mage
 --- !u!114 &1375420184419275374
 MonoBehaviour:
@@ -144,6 +144,7 @@ MonoBehaviour:
   HealthBarUi: {fileID: 6027712498569484939}
   maxHealth: 60
   currentHealth: 10
+  stunned: 0
 --- !u!61 &-2360195074980631015
 BoxCollider2D:
   m_ObjectHideFlags: 0

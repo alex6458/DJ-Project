@@ -23,7 +23,24 @@ public class BodyBase : MonoBehaviour
 
         audioSource.Play();
         targetScript.TakeDamage(attackDamage);
-        targetScript.StartCoroutine(tailEffect(target));
+        var scriptsGameObject = GameObject.Find("_Scripts");
+
+        if (scriptsGameObject == null)
+        {
+            Debug.Log("Scripts Game Object not found");
+        }
+        else
+        {
+            var scriptsOTE = scriptsGameObject.GetComponent<overTimeEffects>();
+            if (scriptsOTE == null)
+            {
+                Debug.Log("OTE Script not found");
+            }
+            else
+            {
+                scriptsOTE.StartCoroutine(tailEffect(target));
+            }
+        }
     }
 
     // Start is called before the first frame update
